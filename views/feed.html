@@ -1,0 +1,358 @@
+<section class="col-span-10 sm:mx-auto sm:col-span-10 lg:col-span-6 border-x border-neutral-800">
+    <!-- Home Box -->
+    <div>
+        <h1 class="p-4 text-xl font-semibold">Home</h1>
+        <ul class="flex h-14 [&>li]:w-full justify-center items-center">
+            <li class="inline-block h-full text-center hover:bg-zinc-800">
+                <a href="#" class="inline-block w-full h-full">
+                    <span
+                        class="after:bottom-0 h-full text-sm inline-flex justify-center items-center after:w-full after:h-1 after:rounded-full relative after:content-[''] after:absolute after:left-0 after:bg-sky-400"
+                        >For you</span
+                    ></a
+                >
+            </li>
+            <li class="inline-block h-full text-center hover:bg-zinc-800">
+                <a href="#" class="inline-block w-full h-full text-sm text-center">
+                    <span class="inline-flex items-center justify-center h-full my-auto text-sm">
+                        Following</span
+                    ></a
+                >
+            </li>
+        </ul>
+    </div>
+    <!-- End home box -->
+
+    <!-- Tweet box -->
+    <div class="flex gap-4 p-4 border-t border-neutral-800">
+        <div class="w-1/12">
+            <div class="overflow-hidden rounded-full">
+                <img src="./images/1.jpg" alt="" />
+            </div>
+        </div>
+        <div class="w-full">
+            <textarea
+                name="tweet"
+                id="tweet"
+                class="w-full pt-3 outline-none resize-none bg-inherit"
+                placeholder="Whats happening"
+            ></textarea>
+            <div class="flex gap-4 border-t border-neutral-800 pt-4 [&>i]:pt-[0.5px]">
+                <i class="fa-regular fa-image text-sky-400"></i>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-6 h-6 text-sky-400"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        fill="currentColor"
+                        d="M8.5 14h1q.425 0 .713-.288q.287-.287.287-.712v-1h-1v1h-1v-2h2q0-.425-.287-.713Q9.925 10 9.5 10h-1q-.425 0-.712.287q-.288.288-.288.713v2q0 .425.288.712q.287.288.712.288Zm3 0h1v-4h-1Zm2 0h1v-1.5H16v-1h-1.5V11h2v-1h-3ZM5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h14q.825 0 1.413.587Q21 4.175 21 5v14q0 .825-.587 1.413Q19.825 21 19 21Zm0-2h14V5H5v14ZM5 5v14V5Z"
+                    />
+                </svg>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-6 h-6 text-sky-400"
+                    viewBox="0 0 256 256"
+                >
+                    <path
+                        fill="currentColor"
+                        d="M216 164h-21.2a28 28 0 0 0-53.6 0H40a8 8 0 0 0 0 16h101.2a28 28 0 0 0 53.6 0H216a8 8 0 0 0 0-16Zm-48 20a12 12 0 1 1 12-12a12 12 0 0 1-12 12ZM40 92h37.2a28 28 0 0 0 53.6 0H216a8 8 0 0 0 0-16h-85.2a28 28 0 0 0-53.6 0H40a8 8 0 0 0 0 16Zm64-20a12 12 0 1 1-12 12a12 12 0 0 1 12-12Z"
+                    />
+                </svg>
+                <i class="fa-regular fa-face-smile text-sky-400"></i>
+                <i class="fa-regular fa-calendar text-sky-400"></i>
+                <i class="fa-solid fa-location-dot text-sky-400 opacity-60"></i>
+                <button
+                    class="px-4 py-2 ml-auto text-sm transition duration-200 rounded-full bg-sky-400 hover:bg-sky-500"
+                >
+                    Tweet
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- End tweet box -->
+
+    <!-- Tweet box -->
+    <div class="flex flex-col gap-4 px-4 pl-10 border-t border-neutral-800">
+        <a href="#" class="ml-auto group"
+            ><i class="pt-4 text-gray-500 fa-solid fa-ellipsis group-hover:text-sky-400"></i
+        ></a>
+        <div>
+            <h2 class="pb-4 text-4xl font-bold">Welcome back</h2>
+            <p class="text-base text-slate-400">
+                Select some topics you're interesed in to help personalize your Twitter experience,
+                starting with finding people to follow
+            </p>
+        </div>
+        <a href="#" class="px-5 py-3 my-6 text-base text-black bg-white rounded-full w-fit">
+            Get started</a
+        >
+    </div>
+    <!-- End tweet box -->
+
+    % for tweet in tweets:
+    <!-- Posted tweet 1 -->
+    <div>
+        <div class="flex gap-4 p-4 border-t col-span-full border-neutral-800">
+            <div class="flex flex-col items-end w-1/12 gap-3 pt-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 [&>g]:fill-neutral-800">
+                    <g>
+                        <path
+                            d="M12 1.75c-5.11 0-9.25 4.14-9.25 9.25 0 4.77 3.61 8.7 8.25 9.2v2.96l1.15-.17c1.88-.29 4.11-1.56 5.87-3.5 1.79-1.96 3.17-4.69 3.23-7.97.09-5.54-4.14-9.77-9.25-9.77zM13 14H9v-2h4v2zm2-4H9V8h6v2z"
+                        ></path>
+                    </g>
+                </svg>
+                <div class="overflow-hidden rounded-full">
+                    <img src="./images/{{tweet['image_name']}}" alt="" />
+                </div>
+            </div>
+            <div class="w-full">
+                <span class="flex items-center gap-1"
+                    ><span class="text-base font-bold">{{tweet["fullname"]}}</span>
+                    % if tweet["verified"]:
+                    <svg
+                        class="text-sky-400"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"
+                        />
+                    </svg>
+                    % end
+                    <span class="text-base text-gray-600"
+                        ><strong>@</strong>{{tweet["username"]}} &#x2022; Jan 21</span
+                    >
+                    <a href="#" class="ml-auto group"
+                        ><i class="text-gray-500 fa-solid fa-xmark group-hover:text-sky-400"></i
+                    ></a>
+                </span>
+                <p class="text-lg">{{tweet["tweet"]}}</p>
+                % if "tweet_image" in tweet:
+                <img class="w-full pt-2" src="./images/{{tweet['tweet_image']}}" alt="" />
+                % end
+                <div class="flex gap-14 py-4 [&>span]:cursor-pointer text-gray-500 text-sm">
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-regular fa-comment relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-sky-400/20 group-hover:text-sky-500 group-hover:after:text-sky-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-sky-500"
+                            >{{tweet["total_messages"]}}</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-solid fa-retweet relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-green-400/20 group-hover:text-green-500 group-hover:after:text-green-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-green-500"
+                            >{{tweet["total_retweets"]}}</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-regular fa-heart relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-red-400/20 group-hover:text-red-500 group-hover:after:text-red-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-red-500"
+                            >{{tweet["total_likes"]}}</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-solid fa-chart-simple relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-sky-400/20 group-hover:text-sky-500 group-hover:after:text-sky-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-sky-500"
+                            >{{tweet["total_graph"]}}</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-solid fa-arrow-up-from-bracket relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-sky-400/20 group-hover:text-sky-500 group-hover:after:text-sky-500"
+                        ></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="flex gap-3 px-3 py-3 hover:bg-zinc-900">
+            <div class="w-1/12 px-4"></div>
+            <a href="#" class="w-full text-base text-sky-400">Show this thread</a>
+        </div>
+    </div>
+    % end
+    <!-- End posted tweet 1 -->
+
+    <!-- Posted tweet 2 -->
+    <!-- <div>
+        <div class="flex gap-4 p-4 border-t col-span-full border-neutral-800">
+            <div class="flex flex-col items-end w-1/12 gap-3 pt-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 [&>g]:fill-neutral-800">
+                    <g>
+                        <path
+                            d="M12 1.75c-5.11 0-9.25 4.14-9.25 9.25 0 4.77 3.61 8.7 8.25 9.2v2.96l1.15-.17c1.88-.29 4.11-1.56 5.87-3.5 1.79-1.96 3.17-4.69 3.23-7.97.09-5.54-4.14-9.77-9.25-9.77zM13 14H9v-2h4v2zm2-4H9V8h6v2z"
+                        ></path>
+                    </g>
+                </svg>
+                <div class="overflow-hidden rounded-full">
+                    <img src="./images/1.jpg" alt="" />
+                </div>
+            </div>
+            <div class="w-full">
+                <span class="flex items-center gap-1"
+                    ><span class="text-base font-bold">malteskjoldager1994</span>
+                    <svg
+                        class="text-sky-400"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"
+                        />
+                    </svg>
+                    <span class="text-base text-gray-600">@flamingofar &#x2022; Jan 21</span>
+                    <a href="#" class="ml-auto group"
+                        ><i class="text-gray-500 fa-solid fa-xmark group-hover:text-sky-400"></i
+                    ></a>
+                </span>
+                <p class="text-lg">
+                    Apperantly, PHP is dead <br /><br />23 years into my programming career, and nobody
+                    thought to warn me.
+                </p>
+                <div class="flex gap-14 py-4 [&>span]:cursor-pointer text-gray-500 text-sm">
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-regular fa-comment relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-sky-400/20 group-hover:text-sky-500 group-hover:after:text-sky-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-sky-500"
+                            >29</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-solid fa-retweet relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-green-400/20 group-hover:text-green-500 group-hover:after:text-green-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-green-500"
+                            >2</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-regular fa-heart relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-red-400/20 group-hover:text-red-500 group-hover:after:text-red-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-red-500"
+                            >113</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-solid fa-chart-simple relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-sky-400/20 group-hover:text-sky-500 group-hover:after:text-sky-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-sky-500"
+                            >15k</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-solid fa-arrow-up-from-bracket relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-sky-400/20 group-hover:text-sky-500 group-hover:after:text-sky-500"
+                        ></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="flex gap-3 px-3 py-3 hover:bg-zinc-900">
+            <div class="w-1/12 px-4"></div>
+            <a href="#" class="w-full text-base text-sky-400">Show this thread</a>
+        </div>
+    </div> -->
+    <!-- End posted tweet 2 -->
+
+    <!-- Posted tweet 3 -->
+    <!-- <div>
+        <div class="flex gap-4 p-4 border-t col-span-full border-neutral-800">
+            <div class="flex flex-col items-end w-1/12 gap-3 pt-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 [&>g]:fill-neutral-800">
+                    <g>
+                        <path
+                            d="M12 1.75c-5.11 0-9.25 4.14-9.25 9.25 0 4.77 3.61 8.7 8.25 9.2v2.96l1.15-.17c1.88-.29 4.11-1.56 5.87-3.5 1.79-1.96 3.17-4.69 3.23-7.97.09-5.54-4.14-9.77-9.25-9.77zM13 14H9v-2h4v2zm2-4H9V8h6v2z"
+                        ></path>
+                    </g>
+                </svg>
+                <div class="overflow-hidden rounded-full">
+                    <img src="./images/1.jpg" alt="" />
+                </div>
+            </div>
+            <div class="w-full">
+                <span class="flex items-center gap-1"
+                    ><span class="text-base font-bold">malteskjoldager1994</span>
+                    <svg
+                        class="text-sky-400"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"
+                        />
+                    </svg>
+                    <span class="text-base text-gray-600">@flamingofar &#x2022; Jan 21</span>
+                    <a href="#" class="ml-auto group"
+                        ><i class="text-gray-500 fa-solid fa-xmark group-hover:text-sky-400"></i
+                    ></a>
+                </span>
+                <p class="text-lg">
+                    Apperantly, PHP is dead <br /><br />23 years into my programming career, and nobody
+                    thought to warn me.
+                </p>
+                <div class="flex gap-14 py-4 [&>span]:cursor-pointer text-gray-500 text-sm">
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-regular fa-comment relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-sky-400/20 group-hover:text-sky-500 group-hover:after:text-sky-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-sky-500"
+                            >29</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-solid fa-retweet relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-green-400/20 group-hover:text-green-500 group-hover:after:text-green-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-green-500"
+                            >2</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-regular fa-heart relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-red-400/20 group-hover:text-red-500 group-hover:after:text-red-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-red-500"
+                            >113</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-solid fa-chart-simple relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-sky-400/20 group-hover:text-sky-500 group-hover:after:text-sky-500"
+                        ></i>
+                        <span class="transition duration-500 ease-linear group-hover:text-sky-500"
+                            >15k</span
+                        >
+                    </span>
+                    <span class="flex items-center gap-3 transition duration-500 ease-linear group">
+                        <i
+                            class="fa-solid fa-arrow-up-from-bracket relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-sky-400/20 group-hover:text-sky-500 group-hover:after:text-sky-500"
+                        ></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="flex gap-3 px-3 py-3 hover:bg-zinc-900">
+            <div class="w-1/12 px-4"></div>
+            <a href="#" class="w-full text-base text-sky-400">Show this thread</a>
+        </div>
+    </div> -->
+    <!-- End posted tweet 3 -->
+</section>

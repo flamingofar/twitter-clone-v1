@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./app.css" />
+		<script src="https://kit.fontawesome.com/cf2e264133.js" crossorigin="anonymous"></script>
+		<title>{{title}}</title>
+	</head>
+	<body class="w-screen overflow-x-hidden overflow-y-scroll text-xl bg-black sans text-slate-200">
+		<main class="grid w-full h-full grid-cols-12 gap-6 px-6 mx-auto max-w-7xl">
+			<!-- Left -->
+			% include('side_menu')
+			<!-- End left -->
+
+			<!-- Center -->
+			% include('feed')
+			<!-- End center -->
+
+			<!-- Right -->
+			% include("side_right")
+			<!-- End right -->
+		</main>
+		<!-- Chat -->
+		<div
+			data-chat
+			class="w-3/12 h-1/2 translate-y-[90%] transition duration-300 bg-black fixed flex flex-col gap-2 right-10 bottom-0 shadow-chat py-3 rounded-t-2xl"
+		>
+			<div data-chat-header class="flex justify-between px-4 cursor-pointer">
+				<h3>Messages</h3>
+				<div class="flex gap-4">
+					<button>
+						<svg
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+							class="w-5 h-5 icon-style"
+							style="color: rgb(239, 243, 244)"
+						>
+							<g>
+								<path
+									d="M1.998 5.5c0-1.381 1.119-2.5 2.5-2.5h15c1.381 0 2.5 1.119 2.5 2.5V12h-2v-1.537l-8 3.635-8-3.635V18.5c0 .276.224.5.5.5H13v2H4.498c-1.381 0-2.5-1.119-2.5-2.5v-13zm2 2.766l8 3.635 8-3.635V5.5c0-.276-.224-.5-.5-.5h-15c-.276 0-.5.224-.5.5v2.766zM19 18v-3h2v3h3v2h-3v3h-2v-3h-3v-2h3z"
+								></path>
+							</g>
+						</svg>
+					</button>
+					<button data-close-icon>
+						<svg
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+							class="w-5 h-5 icon-style"
+							style="color: rgb(239, 243, 244)"
+						>
+							<g>
+								<path
+									d="M12 2.59l9.46 9.45-1.42 1.42L12 5.41l-8.04 8.05-1.42-1.42L12 2.59zm0 7l9.46 9.45-1.42 1.42L12 12.41l-8.04 8.05-1.42-1.42L12 9.59z"
+								></path>
+							</g>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<div class="flex flex-col overflow-scroll">
+				<a
+					href="#"
+					class="flex gap-4 px-4 py-4 transition duration-200 group/chat hover:bg-zinc-800"
+				>
+					<div class="w-12 overflow-hidden rounded-full h-11">
+						<img src="./images/1.jpg" alt="" />
+					</div>
+					<div class="flex flex-col justify-start w-full">
+						<div class="flex justify-start gap-1">
+							<p class="text-base font-bold">Elon Musk</p>
+							<p class="text-base text-neutral-500">@elonmusk</p>
+							<div class="flex gap-2 ml-auto">
+								<span class="text-base text-neutral-500">&#x2022; Jan 21</span>
+								<div
+									class="ml-auto group-hover/chat:flex cursor-pointer hidden group/icon rounded-full items-center transition duration-200 after:content-[''] after:w-7 after:h-7 hover:after:bg-sky-400/10 relative after:absolute after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full"
+								>
+									<i class="text-gray-500 fa-solid fa-ellipsis group-hover/icon:text-sky-400"></i>
+								</div>
+							</div>
+						</div>
+						<p
+							class="w-1/2 overflow-hidden text-base text-neutral-500 text-ellipsis whitespace-nowrap"
+						>
+							Hi ma-dude! Lets talk about the project!
+						</p>
+					</div>
+				</a>
+				<a
+					href="#"
+					class="flex gap-4 px-4 py-4 transition duration-200 group/chat hover:bg-zinc-800"
+				>
+					<div class="w-12 overflow-hidden rounded-full h-11">
+						<img src="./images/1.jpg" alt="" />
+					</div>
+					<div class="flex flex-col justify-start w-full">
+						<div class="flex justify-start gap-1">
+							<p class="text-base font-bold">Elon Musk</p>
+							<p class="text-base text-neutral-500">@elonmusk</p>
+							<div class="flex gap-2 ml-auto">
+								<span class="text-base text-neutral-500">&#x2022; Jan 21</span>
+								<div
+									class="ml-auto group-hover/chat:flex cursor-pointer hidden group/icon rounded-full items-center transition duration-200 after:content-[''] after:w-7 after:h-7 hover:after:bg-sky-400/10 relative after:absolute after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full"
+								>
+									<i class="text-gray-500 fa-solid fa-ellipsis group-hover/icon:text-sky-400"></i>
+								</div>
+							</div>
+						</div>
+						<p
+							class="w-1/2 overflow-hidden text-base text-neutral-500 text-ellipsis whitespace-nowrap"
+						>
+							Hi ma-dude! Lets talk about the project!
+						</p>
+					</div>
+				</a>
+				<a
+					href="#"
+					class="flex gap-4 px-4 py-4 transition duration-200 group/chat hover:bg-zinc-800"
+				>
+					<div class="w-12 overflow-hidden rounded-full h-11">
+						<img src="./images/1.jpg" alt="" />
+					</div>
+					<div class="flex flex-col justify-start w-full">
+						<div class="flex justify-start gap-1">
+							<p class="text-base font-bold">Elon Musk</p>
+							<p class="text-base text-neutral-500">@elonmusk</p>
+							<div class="flex gap-2 ml-auto">
+								<span class="text-base text-neutral-500">&#x2022; Jan 21</span>
+								<div
+									class="ml-auto group-hover/chat:flex cursor-pointer hidden group/icon rounded-full items-center transition duration-200 after:content-[''] after:w-7 after:h-7 hover:after:bg-sky-400/10 relative after:absolute after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full"
+								>
+									<i class="text-gray-500 fa-solid fa-ellipsis group-hover/icon:text-sky-400"></i>
+								</div>
+							</div>
+						</div>
+						<p
+							class="w-1/2 overflow-hidden text-base text-neutral-500 text-ellipsis whitespace-nowrap"
+						>
+							Hi ma-dude! Lets talk about the project!
+						</p>
+					</div>
+				</a>
+				<a
+					href="#"
+					class="flex gap-4 px-4 py-4 transition duration-200 group/chat hover:bg-zinc-800"
+				>
+					<div class="w-12 overflow-hidden rounded-full h-11">
+						<img src="./images/1.jpg" alt="" />
+					</div>
+					<div class="flex flex-col justify-start w-full">
+						<div class="flex justify-start gap-1">
+							<p class="text-base font-bold">Elon Musk</p>
+							<p class="text-base text-neutral-500">@elonmusk</p>
+							<div class="flex gap-2 ml-auto">
+								<span class="text-base text-neutral-500">&#x2022; Jan 21</span>
+								<div
+									class="ml-auto group-hover/chat:flex cursor-pointer hidden group/icon rounded-full items-center transition duration-200 after:content-[''] after:w-7 after:h-7 hover:after:bg-sky-400/10 relative after:absolute after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full"
+								>
+									<i class="text-gray-500 fa-solid fa-ellipsis group-hover/icon:text-sky-400"></i>
+								</div>
+							</div>
+						</div>
+						<p
+							class="w-1/2 overflow-hidden text-base text-neutral-500 text-ellipsis whitespace-nowrap"
+						>
+							Hi ma-dude! Lets talk about the project!
+						</p>
+					</div>
+				</a>
+				<a
+					href="#"
+					class="flex gap-4 px-4 py-4 transition duration-200 group/chat hover:bg-zinc-800"
+				>
+					<div class="w-12 overflow-hidden rounded-full h-11">
+						<img src="./images/1.jpg" alt="" />
+					</div>
+					<div class="flex flex-col justify-start w-full">
+						<div class="flex justify-start gap-1">
+							<p class="text-base font-bold">Elon Musk</p>
+							<p class="text-base text-neutral-500">@elonmusk</p>
+							<div class="flex gap-2 ml-auto">
+								<span class="text-base text-neutral-500">&#x2022; Jan 21</span>
+								<div
+									class="ml-auto group-hover/chat:flex cursor-pointer hidden group/icon rounded-full items-center transition duration-200 after:content-[''] after:w-7 after:h-7 hover:after:bg-sky-400/10 relative after:absolute after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full"
+								>
+									<i class="text-gray-500 fa-solid fa-ellipsis group-hover/icon:text-sky-400"></i>
+								</div>
+							</div>
+						</div>
+						<p
+							class="w-1/2 overflow-hidden text-base text-neutral-500 text-ellipsis whitespace-nowrap"
+						>
+							Hi ma-dude! Lets talk about the project!
+						</p>
+					</div>
+				</a>
+				<a
+					href="#"
+					class="flex gap-4 px-4 py-4 transition duration-200 group/chat hover:bg-zinc-800"
+				>
+					<div class="w-12 overflow-hidden rounded-full h-11">
+						<img src="./images/1.jpg" alt="" />
+					</div>
+					<div class="flex flex-col justify-start w-full">
+						<div class="flex justify-start gap-1">
+							<p class="text-base font-bold">Elon Musk</p>
+							<p class="text-base text-neutral-500">@elonmusk</p>
+							<div class="flex gap-2 ml-auto">
+								<span class="text-base text-neutral-500">&#x2022; Jan 21</span>
+								<div
+									class="ml-auto group-hover/chat:flex cursor-pointer hidden group/icon rounded-full items-center transition duration-200 after:content-[''] after:w-7 after:h-7 hover:after:bg-sky-400/10 relative after:absolute after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full"
+								>
+									<i class="text-gray-500 fa-solid fa-ellipsis group-hover/icon:text-sky-400"></i>
+								</div>
+							</div>
+						</div>
+						<p
+							class="w-1/2 overflow-hidden text-base text-neutral-500 text-ellipsis whitespace-nowrap"
+						>
+							Hi ma-dude! Lets talk about the project!
+						</p>
+					</div>
+				</a>
+				<a
+					href="#"
+					class="flex gap-4 px-4 py-4 transition duration-200 group/chat hover:bg-zinc-800"
+				>
+					<div class="w-12 overflow-hidden rounded-full h-11">
+						<img src="./images/1.jpg" alt="" />
+					</div>
+					<div class="flex flex-col justify-start w-full">
+						<div class="flex justify-start gap-1">
+							<p class="text-base font-bold">Elon Musk</p>
+							<p class="text-base text-neutral-500">@elonmusk</p>
+							<div class="flex gap-2 ml-auto">
+								<span class="text-base text-neutral-500">&#x2022; Jan 21</span>
+								<div
+									class="ml-auto group-hover/chat:flex cursor-pointer hidden group/icon rounded-full items-center transition duration-200 after:content-[''] after:w-7 after:h-7 hover:after:bg-sky-400/10 relative after:absolute after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full"
+								>
+									<i class="text-gray-500 fa-solid fa-ellipsis group-hover/icon:text-sky-400"></i>
+								</div>
+							</div>
+						</div>
+						<p
+							class="w-1/2 overflow-hidden text-base text-neutral-500 text-ellipsis whitespace-nowrap"
+						>
+							Hi ma-dude! Lets talk about the project!
+						</p>
+					</div>
+				</a>
+				<a
+					href="#"
+					class="flex gap-4 px-4 py-4 transition duration-200 group/chat hover:bg-zinc-800"
+				>
+					<div class="w-12 overflow-hidden rounded-full h-11">
+						<img src="./images/1.jpg" alt="" />
+					</div>
+					<div class="flex flex-col justify-start w-full">
+						<div class="flex justify-start gap-1">
+							<p class="text-base font-bold">Elon Musk</p>
+							<p class="text-base text-neutral-500">@elonmusk</p>
+							<div class="flex gap-2 ml-auto">
+								<span class="text-base text-neutral-500">&#x2022; Jan 21</span>
+								<div
+									class="ml-auto group-hover/chat:flex cursor-pointer hidden group/icon rounded-full items-center transition duration-200 after:content-[''] after:w-7 after:h-7 hover:after:bg-sky-400/10 relative after:absolute after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full"
+								>
+									<i class="text-gray-500 fa-solid fa-ellipsis group-hover/icon:text-sky-400"></i>
+								</div>
+							</div>
+						</div>
+						<p
+							class="w-1/2 overflow-hidden text-base text-neutral-500 text-ellipsis whitespace-nowrap"
+						>
+							Hi ma-dude! Lets talk about the project!
+						</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<!-- End chat -->
+		<script>
+			const chat = document.querySelector("[data-chat]");
+			const chatHeader = chat.querySelector("[data-chat-header]");
+			const chatClose = chat.querySelector("[data-close-icon]");
+			chatHeader.addEventListener("click", () => {
+				console.log("hej");
+				chat.classList.toggle("open");
+				chatClose.classList.toggle("rotate-180");
+			});
+		</script>
+	</body>
+</html>

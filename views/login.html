@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="app.css" />
+		<script src="https://kit.fontawesome.com/cf2e264133.js" crossorigin="anonymous"></script>
+		<style>
+			.active {
+				background: greenyellow;
+			}
+		</style>
+		<title>{{get("title", "Twitter")}}</title>
+	</head>
+	<body>
+		<main class="flex items-center justify-center w-screen h-screen text-white bg-[#242D34]">
+			<section
+				class="relative flex flex-col px-[18%] pt-4 h-[40rem] items-start bg-black w-[38rem] rounded-2xl justify-start gap-8"
+			>
+				<button
+					class="absolute w-6 h-6 text-gray-200 top-4 left-4 before:w-9 before:h-9 before-content-[''] hover:before:bg-neutral-800 before:rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 z-10 before:-z-10 before:transition-all before:duration-150"
+				>
+					<svg
+						class="w-full h-full"
+						xmlns="http://www.w3.org/2000/svg"
+						width="32"
+						height="32"
+						viewBox="0 0 24 24"
+					>
+						<path
+							fill="currentColor"
+							d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6Z"
+						/>
+					</svg>
+				</button>
+				<div class="flex justify-center w-full">
+					<i class="text-3xl text-gray-200 fa-brands fa-twitter"></i>
+				</div>
+				<h1 class="text-3xl font-bold text-gray-200">Sign in to Twitter</h1>
+				<div class="flex flex-col w-full">
+					<div class="flex flex-col items-center justify-center w-full gap-6">
+						<button
+							disabled
+							class="flex items-center justify-center w-full h-10 gap-2 text-sm text-black transition-colors duration-200 bg-white rounded-full cursor-not-allowed hover:bg-gray-100"
+						>
+							<svg
+								class="w-5 h-5"
+								xmlns="http://www.w3.org/2000/svg"
+								width="31.27"
+								height="32"
+								viewBox="0 0 256 262"
+							>
+								<path
+									fill="#4285F4"
+									d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622l38.755 30.023l2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"
+								/>
+								<path
+									fill="#34A853"
+									d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055c-34.523 0-63.824-22.773-74.269-54.25l-1.531.13l-40.298 31.187l-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"
+								/>
+								<path
+									fill="#FBBC05"
+									d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82c0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782"
+								/>
+								<path
+									fill="#EB4335"
+									d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0C79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"
+								/>
+							</svg>
+							Sign in with Google
+						</button>
+						<button
+							disabled
+							class="flex items-center justify-center w-full h-10 gap-2 text-sm font-bold text-black transition-colors duration-200 bg-white rounded-full cursor-not-allowed hover:bg-gray-100"
+						>
+							<svg
+								class="w-5 h-5"
+								xmlns="http://www.w3.org/2000/svg"
+								width="26.01"
+								height="32"
+								viewBox="0 0 256 315"
+							>
+								<path
+									d="M213.803 167.03c.442 47.58 41.74 63.413 42.197 63.615c-.35 1.116-6.599 22.563-21.757 44.716c-13.104 19.153-26.705 38.235-48.13 38.63c-21.05.388-27.82-12.483-51.888-12.483c-24.061 0-31.582 12.088-51.51 12.871c-20.68.783-36.428-20.71-49.64-39.793c-27-39.033-47.633-110.3-19.928-158.406c13.763-23.89 38.36-39.017 65.056-39.405c20.307-.387 39.475 13.662 51.889 13.662c12.406 0 35.699-16.895 60.186-14.414c10.25.427 39.026 4.14 57.503 31.186c-1.49.923-34.335 20.044-33.978 59.822M174.24 50.199c10.98-13.29 18.369-31.79 16.353-50.199c-15.826.636-34.962 10.546-46.314 23.828c-10.173 11.763-19.082 30.589-16.678 48.633c17.64 1.365 35.66-8.964 46.64-22.262"
+								/>
+							</svg>
+							Sign in with Apple
+						</button>
+					</div>
+
+					<div
+						class="py-3 flex gap-2 items-center px-2 justify-center w-full after-content-[''] after:bg-neutral-700 after:h-[1px] after:w-1/2 before-content-[''] before:bg-neutral-700 before:h-[1px] before:w-1/2"
+					>
+						<span>or</span>
+					</div>
+					<div class="flex flex-col w-full gap-6">
+						<div
+							class="relative flex flex-col justify-end w-full h-16 py-2 border rounded-md group border-neutral-700 focus-within:border-sky-500 focus-within:border-2"
+						>
+							<input
+								id="username"
+								type="text"
+								class="w-full pl-2 outline-none peer group-focus:self bg-inherit"
+							/>
+							<label
+								for="username"
+								class="absolute text-lg transition-all duration-150 -translate-y-1/2 peer-focus:text-sky-500 peer-focus:-translate-y-6 peer-focus:text-sm left-2 top-1/2 text-neutral-500"
+								>Phone, email or username</label
+							>
+						</div>
+
+						<button
+							class="flex items-center justify-center w-full h-10 font-bold text-black transition-colors duration-200 bg-white rounded-full hover:bg-gray-100"
+						>
+							Next
+						</button>
+						<button
+							class="flex items-center justify-center w-full h-10 text-sm font-bold transition-colors duration-200 border rounded-full border-neutral-700 bg-inherit hover:bg-neutral-900"
+						>
+							Forgot password?
+						</button>
+					</div>
+				</div>
+				<p class="pt-4 text-base text-neutral-500">
+					Don't have an account?
+					<a href="#" class="hover:underline underline-offset-3 text-sky-500">Sign up</a>
+				</p>
+			</section>
+		</main>
+	</body>
+</html>
