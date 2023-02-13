@@ -36,10 +36,9 @@ import api.get_all
 #!################# Run on host or locally
 # Try will wun in AWS
 try:
-    # import production
+    import production
     print("Running on AWS")
     application = default_app()
-    print(application)
 # Except will run on local
 except Exception as ex:
     print("Running on localhost")
