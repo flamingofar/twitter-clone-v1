@@ -6,6 +6,8 @@ import g
 
 #*############################# CONNECTS GITHUB AND PYTHONANYWHERE
 
+# https://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@github.com/flamingofar/twitter-clone-v1.git
+
 @post('/secret_url_for_git_hook')
 def git_update():
   repo = git.Repo('./twitter-clone-v1')
@@ -42,7 +44,7 @@ import api.get_all
 try:
     import production
     print("Running on AWS")
-    g.DB_PATH=os.getcwd() + "/twitter.db"
+    g.DB_PATH=os.getcwd() + "twitter-clone-v1/twitter.db"
     application = default_app()
 # Except will run on local
 except Exception as ex:
