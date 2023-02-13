@@ -1,8 +1,7 @@
 
 from bottle import post, default_app, run, static_file, get
 import git
-import os
-import g
+
 
 
 #*############################# CONNECTS GITHUB AND PYTHONANYWHERE
