@@ -1,6 +1,8 @@
-from bottle import get, template, view, response, error
+from bottle import get, template
 import json
 import sqlite3
+import os
+import g
 
 with open('tweets.json') as tweets_json:
   data = json.load(tweets_json)
@@ -14,11 +16,10 @@ def dict_factory(cursor, row):
 
 
 @get("/<username>")
-# @view('profile')
 def _(username):
 
     try:
-      db = sqlite3.connect("twitter.db")
+      db = sqlite3.connect(os.getcwd()+"/twitter.db")
       db.row_factory = dict_factory
       user = db.execute("SELECT * FROM users WHERE username=? COLLATE NOCASE", (username,)).fetchall()[0]
       # Get the user's ID
