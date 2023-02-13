@@ -18,9 +18,6 @@ import assets.load_css
 import assets.load_images
 
 #*############################# Routes
-import routes.about
-import routes.contact
-import routes.explore
 import routes.index
 import routes.profile
 import routes.login
