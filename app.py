@@ -13,9 +13,10 @@ import routes.about
 import routes.contact
 import routes.explore
 import routes.index
+import routes.profile
 import routes.login
+import routes.signup
 import routes.error
-
 ############################## API's
 # Usually API's do not return HTML. But most likely JSON
 # Rule 1 - To test the API you use a HTTP client

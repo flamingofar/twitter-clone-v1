@@ -1,87 +1,91 @@
 <aside class="sticky top-0 hidden h-screen pt-4 lg:col-span-3 lg:flex lg:flex-col">
-    <div class="flex flex-col gap-4">
-        <div class="flex items-center w-full gap-3 px-4 py-3 text-base rounded-full bg-zinc-900">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-6 h-6 [&>g>path]:fill-gray-500">
-                <g>
-                    <path
-                        d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z"
-                    ></path>
-                </g>
-            </svg>
-            <input type="text" class="outline-none bg-inherit" placeholder="Search Twitter" />
-        </div>
-        <div class="pt-4 overflow-hidden bg-zinc-900 rounded-xl">
-            <h2 class="px-4 bold">Trends for you</h2>
-            <div class="flex flex-col pt-4">
-                % for trend in trends:
-                <div
-                    class="flex items-center justify-between w-full px-4 py-2 hover:bg-zinc-800 hover:cursor-pointer"
-                >
-                    <div class="flex flex-col">
-                        <span class="text-xs text-gray-500">Trending in Denmark</span>
-                        <span class="text-sm font-bold">{{trend["title"]}}</span>
-                        <span class="text-xs text-gray-500">{{trend["total_hash"]}} tweets</span>
-                    </div>
+	<div class="flex flex-col gap-4">
+		<div class="flex items-center w-full gap-3 px-4 py-3 text-base rounded-full bg-zinc-900">
+			<svg
+				viewBox="0 0 24 24"
+				aria-hidden="true"
+				class="flex-shrink-0 w-6 h-6 [&>g>path]:fill-gray-500"
+			>
+				<g>
+					<path
+						d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z"
+					></path>
+				</g>
+			</svg>
+			<input type="text" class="w-full outline-none bg-inherit" placeholder="Search Twitter" />
+		</div>
+		<div class="pt-4 overflow-hidden bg-zinc-900 rounded-xl">
+			<h2 class="px-4 bold">Trends for you</h2>
+			<div class="flex flex-col pt-4">
+				% for trend in trends:
+				<div
+					class="flex items-center justify-between w-full px-4 py-2 hover:bg-zinc-800 hover:cursor-pointer"
+				>
+					<div class="flex flex-col">
+						<span class="text-xs text-gray-500">Trending in Denmark</span>
+						<span class="text-sm font-bold">{{trend["title"]}}</span>
+						<span class="text-xs text-gray-500">{{trend["total_hash"]}} tweets</span>
+					</div>
 
-                    <a
-                        href="#"
-                        class="flex items-center p-2 ml-auto transition duration-200 rounded-full group hover:bg-sky-400/10"
-                        ><i class="text-gray-500 fa-solid fa-ellipsis group-hover:text-sky-400"></i
-                    ></a>
-                </div>
-                % end
+					<a
+						href="#"
+						class="flex items-center p-2 ml-auto transition duration-200 rounded-full group hover:bg-sky-400/10"
+						><i class="text-gray-500 fa-solid fa-ellipsis group-hover:text-sky-400"></i
+					></a>
+				</div>
+				% end
 
-                <div
-                    class="flex items-center justify-between w-full px-4 py-2 hover:bg-zinc-800 hover:cursor-pointer"
-                >
-                    <div class="flex flex-col">
-                        <span class="text-xs text-gray-500">Trending in Denmark</span>
-                        <span class="text-sm font-bold">Rasmus</span>
-                        <span class="text-xs text-gray-500">2,358 Tweets</span>
-                    </div>
+				<div
+					class="flex items-center justify-between w-full px-4 py-2 hover:bg-zinc-800 hover:cursor-pointer"
+				>
+					<div class="flex flex-col">
+						<span class="text-xs text-gray-500">Trending in Denmark</span>
+						<span class="text-sm font-bold">Rasmus</span>
+						<span class="text-xs text-gray-500">2,358 Tweets</span>
+					</div>
 
-                    <a
-                        href="#"
-                        class="flex items-center p-2 ml-auto transition duration-200 rounded-full group hover:bg-sky-400/10"
-                        ><i class="text-gray-500 fa-solid fa-ellipsis group-hover:text-sky-400"></i
-                    ></a>
-                </div>
-                <a
-                    href="#"
-                    class="inline-block px-4 py-2 text-base hover:bg-zinc-800 hover:cursor-pointer text-sky-400"
-                    >Show more</a
-                >
-            </div>
-        </div>
+					<a
+						href="#"
+						class="flex items-center p-2 ml-auto transition duration-200 rounded-full group hover:bg-sky-400/10"
+						><i class="text-gray-500 fa-solid fa-ellipsis group-hover:text-sky-400"></i
+					></a>
+				</div>
+				<a
+					href="#"
+					class="inline-block px-4 py-2 text-base hover:bg-zinc-800 hover:cursor-pointer text-sky-400"
+					>Show more</a
+				>
+			</div>
+		</div>
 
-        <div class="pt-4 overflow-hidden bg-zinc-900 rounded-xl">
-            <h2 class="px-3 bold">Trends for you</h2>
-            <div class="flex flex-col">
-                % for follow in who_to_follow:
-                <a
-                    class="flex items-start gap-4 p-3 transition duration-200 cursor-pointer hover:bg-zinc-800"
-                >
-                    <div class="w-12 overflow-hidden rounded-full h-fit">
-                        <img src="./images/{{follow['profile_image']}}" alt="" />
-                    </div>
-                    <div class="flex flex-col">
-                        <p class="text-base bold">{{follow["full_name"]}}</p>
-                        <span class="text-sm text-neutral-600">@{{follow['twitter_tag']}}</span>
-                    </div>
-                    <div
-                        class="px-3 py-1 ml-auto text-base text-black transition duration-200 bg-white rounded-full hover:bg-slate-200"
-                    >
-                        Follow
-                    </div>
-                </a>
-                % end
+		<div class="pt-4 overflow-hidden bg-zinc-900 rounded-xl">
+			<h2 class="px-3 bold">Trends for you</h2>
+			<div class="flex flex-col">
+				% for follow in who_to_follow:
+				<a
+					class="flex items-start gap-4 p-3 transition duration-200 cursor-pointer hover:bg-zinc-800"
+				>
+					<div class="w-12 overflow-hidden rounded-full h-fit">
+						<img src="./images/{{follow['profile_image']}}" alt="" />
+					</div>
+					<div class="flex flex-col">
+						<p class="text-base bold">{{follow["full_name"]}}</p>
+						<span class="text-sm text-neutral-600">@{{follow['twitter_tag']}}</span>
+					</div>
+					<div
+						class="px-3 py-1 ml-auto text-base text-black transition duration-200 bg-white rounded-full hover:bg-slate-200"
+					>
+						Follow
+					</div>
+				</a>
+				% end
 
-                <a
-                    href="#"
-                    class="inline-block p-3 text-base hover:bg-zinc-800 hover:cursor-pointer text-sky-400"
-                    >Show more</a
-                >
-            </div>
-        </div>
-    </div>
+				<a
+					href="#"
+					class="inline-block p-3 text-base hover:bg-zinc-800 hover:cursor-pointer text-sky-400"
+					>Show more</a
+				>
+			</div>
+		</div>
+	</div>
 </aside>
