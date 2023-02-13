@@ -19,7 +19,7 @@ def dict_factory(cursor, row):
 def _(username):
 
     try:
-      db = sqlite3.connect("/home/malteskjoldager/twitter-clone-v1")
+      db = sqlite3.connect(os.getcwd()+"/twitter.db")
       db.row_factory = dict_factory
       user = db.execute("SELECT * FROM users WHERE username=? COLLATE NOCASE", (username,)).fetchall()[0]
       # Get the user's ID

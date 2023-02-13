@@ -38,7 +38,6 @@ import api.get_all
 try:
     import production
     print("Running on AWS")
-    g.DB_PATH=os.getcwd() + "twitter-clone-v1/twitter.db"
     application = default_app()
 # Except will run on local
 except Exception as ex:
