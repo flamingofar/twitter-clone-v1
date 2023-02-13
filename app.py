@@ -42,5 +42,6 @@ try:
     application = default_app()
 # Except will run on local
 except Exception as ex:
+    print(ex)
     print("Running on localhost")
     run(host='127.0.0.1', port=3000, reloader=True, debug=True)
