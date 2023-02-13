@@ -8,7 +8,7 @@ import g
 
 # https://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@github.com/flamingofar/twitter-clone-v1.git
 
-@post('/secret_url_for_git_hook')
+@post('/13e4520155514c39be45e5d5cdac559c')
 def git_update():
   repo = git.Repo('./twitter-clone-v1')
   origin = repo.remotes.origin
