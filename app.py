@@ -1,5 +1,5 @@
 
-from bottle import get, post, run, template, static_file, response, request, default_app
+from bottle import post, default_app,run
 import git
 import os
 import g
