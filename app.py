@@ -1,7 +1,6 @@
 
 from bottle import post, default_app, run, static_file, get
 import git
-import os
 
 
 
@@ -15,13 +14,8 @@ def git_update():
   return ""
 
 #*############################# GET ASSETS
-@get(os.getcwq()+'/<filename:re:.*\.css>')
-def _(filename):
-    return static_file(filename, root='.')
-
-@get('/images/<filename:re:.*\.(jpg|webp|jpeg|png)>')
-def _(filename):
-    return static_file(filename, root='./images')
+import assets.load_css
+import assets.load_images
 
 #*############################# Routes
 import routes.index
