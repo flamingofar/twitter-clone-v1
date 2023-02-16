@@ -3,4 +3,4 @@ import os
 
 @get('/<filename:re:.*\.css>')
 def _(filename):
-    return static_file(filename, root='.')
+    return static_file(filename, root=os.getcwd())
