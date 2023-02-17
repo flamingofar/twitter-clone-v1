@@ -63,14 +63,37 @@
 			<div class="flex flex-col">
 				% for follow in who_to_follow:
 				<a
+					href="/{{follow['user_username']}}"
 					class="flex items-start gap-4 p-3 transition duration-200 cursor-pointer hover:bg-zinc-800"
 				>
 					<div class="w-12 overflow-hidden rounded-full h-fit">
-						<img src="./images/{{follow['profile_image']}}" alt="" />
+						% if follow['user_avatar'] != None :
+						<img class="w-full shrink-0" src="./images/{{follow['user_avatar']}}" alt="" />
+						% else :
+						<img class="w-full shrink-0" src="./images/default_profile.png" alt="" />
+						% end
 					</div>
-					<div class="flex flex-col">
-						<p class="text-base bold">{{follow["full_name"]}}</p>
-						<span class="text-sm text-neutral-600">@{{follow['twitter_tag']}}</span>
+					<div class="flex flex-col truncate">
+						<span class="flex gap-0.5">
+							<p class="text-base truncate bold">
+								{{follow["user_first_name"]}} {{follow["user_last_name"]}}
+							</p>
+							% if int(follow["user_total_followers"]) > 1000000:
+							<svg
+								class="text-sky-400"
+								xmlns="http://www.w3.org/2000/svg"
+								width="20"
+								height="20"
+								fill="currentColor"
+								viewBox="0 0 16 16"
+							>
+								<path
+									d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"
+								/>
+							</svg>
+							% end
+						</span>
+						<span class="text-sm text-neutral-600">@{{follow['user_username']}}</span>
 					</div>
 					<div
 						class="px-3 py-1 ml-auto text-base text-black transition duration-200 bg-white rounded-full hover:bg-slate-200"

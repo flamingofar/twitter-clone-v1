@@ -14,6 +14,7 @@ def git_update():
   return ""
 
 #*############################# GET ASSETS
+import assets.load_js
 import assets.load_css
 import assets.load_images
 

@@ -1,4 +1,4 @@
-% include('header', title=user["name"])
+% include('header', title=title)
 <main class="grid h-full max-w-3xl grid-cols-12 mx-auto lg:max-w-7xl lg:gap-6">
 	<!-- Left -->
 	% include('side_menu')
@@ -26,8 +26,8 @@
 				</svg>
 			</a>
 			<div class="flex flex-col">
-				<h2 class="font-bold leading-6">{{user["name"]}} {{user["last_name"]}}</h2>
-				<span class="text-sm text-neutral-500">{{user["total_tweets"]}} tweets</span>
+				<h2 class="font-bold leading-6">{{user["user_first_name"]}} {{user["user_last_name"]}}</h2>
+				<span class="text-sm text-neutral-500">{{user["user_total_tweets"]}} tweets</span>
 			</div>
 		</div>
 		<!-- top end -->
@@ -42,13 +42,11 @@
 		<div class="grid grid-cols-6 px-5 pb-4">
 			<div class="col-span-2 col-start-1 -mt-[10vmin]">
 				<div class="w-10/12 overflow-hidden border-4 border-black rounded-full">
-					% if 'avatar' in user:
-						<img class="w-full" src="./images/{{user['avatar']}}" alt="" />
-					% else:
+					% if user['user_avatar'] != None :
+						<img class="w-full" src="./images/{{user['user_avatar']}}" alt="" />
+					% else :
 						<img class="w-full" src="./images/default_profile.png" alt="" />
 					% end
-
-					<!-- <img class="w-full" src="./images/{{user.get('avatar', 'default_profile.png')}}" alt="" /> -->
 				</div>
 			</div>
 			<button
@@ -59,9 +57,9 @@
 			<div class="flex flex-col col-span-2 col-start-1 gap-3 mt-4">
 				<div class="flex flex-col">
 					<h3 class="text-xl font-bold leading-5 whitespace-nowrap">
-						{{user["name"]}} {{user["last_name"]}}
+						{{user["user_first_name"]}} {{user["user_last_name"]}}
 					</h3>
-					<span class="text-base text-neutral-600">@{{user["username"]}}</span>
+					<span class="text-base text-neutral-600">@{{user["user_username"]}}</span>
 				</div>
 				<span class="flex items-center gap-1 text-base whitespace-nowrap text-zinc-600">
 					<div class="flex-shrink-0 w-5 h-5">
@@ -80,12 +78,12 @@
 					<a
 						href="#"
 						class="flex gap-1 hover:underline hover:underline-offset-2 hover:decoration-white"
-						><span class="font-bold text-white">{{user["total_following"]}}</span>Following</a
+						><span class="font-bold text-white">{{user["user_total_following"]}}</span>Following</a
 					>
 					<a
 						href="#"
 						class="flex gap-1 hover:underline hover:underline-offset-2 hover:decoration-white"
-						><span class="font-bold text-white">{{user["total_followers"]}}</span>Followers</a
+						><span class="font-bold text-white">{{user["user_total_followers"]}}</span>Followers</a
 					>
 				</div>
 			</div>
@@ -125,9 +123,9 @@
 		<!-- Tabs End -->
 
 		<!-- Tweets -->
-		<div>
-			% for tweet in tweets:
-			<div class="flex gap-4 p-4 border-t col-span-full border-neutral-800">
+		% for tweet in tweets:
+		<div data-tweet>
+			<div  class="flex gap-4 p-4 border-t col-span-full border-neutral-800">
 				<div class="flex flex-col items-end flex-shrink-0 gap-3 pt-1 md:w-1/12">
 					<div class="w-12 overflow-hidden rounded-full">
 						<img src="./images/default_profile.png" alt="" />
@@ -136,18 +134,18 @@
 				<div class="w-full min-w-0">
 					<span class="flex items-center gap-2 truncate">
 						<span class="text-base font-bold truncate"
-							>{{tweet["name"]}} {{tweet["last_name"]}}</span
+							>{{tweet["user_first_name"]}} {{tweet["user_last_name"]}}</span
 						>
 
 						<span class="text-base text-gray-600 truncate"
-							><strong>@</strong>{{tweet["username"]}}</span
+							><strong>@</strong>{{tweet["user_username"]}}</span
 						>
-						<span class="text-base text-gray-600">&#x2022; 6h</span>
+						<span class="text-base text-gray-600">&#x2022; <span data-tweet-created-at> {{tweet["tweet_created_at"]}}</span></span>
 						<a href="#" class="ml-auto group"
 							><i class="text-gray-500 fa-solid fa-ellipsis group-hover/icon:text-sky-400"></i
 						></a>
 					</span>
-					<p class="text-lg">{{tweet["message"]}}</p>
+					<p class="text-lg">{{tweet["tweet_message"]}}</p>
 
 					<div class="flex py-4 [&>span]:w-full [&>span]:cursor-pointer text-gray-500 text-sm">
 						<span class="flex items-center gap-3 transition duration-500 ease-linear group">
@@ -155,7 +153,7 @@
 								class="fa-regular fa-comment relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-sky-400/20 group-hover:text-sky-500 group-hover:after:text-sky-500"
 							></i>
 							<span class="transition duration-500 ease-linear group-hover:text-sky-500"
-								>{{tweet["total_replies"]}}</span
+								>{{tweet["tweet_total_replies"]}}</span
 							>
 						</span>
 						<span class="flex items-center gap-3 transition duration-500 ease-linear group">

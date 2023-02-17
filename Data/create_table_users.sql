@@ -1,15 +1,15 @@
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
-    id                  TEXT NOT NULL,
-    username            TEXT,
-    name                TEXT NOT NULL,
-    last_name           TEXT NOT NULL,
-    total_followers     TEXT,
-    total_following     TEXT,
-    total_tweets        TEXT,
-    avatar              TEXT,
-    PRIMARY KEY (id)
+    user_id                  TEXT NOT NULL,
+    user_username            TEXT,
+    user_first_name          TEXT NOT NULL,
+    user_last_name           TEXT NOT NULL,
+    user_total_followers     TEXT,
+    user_total_following     TEXT,
+    user_total_tweets        TEXT,
+    user_avatar              TEXT,
+    PRIMARY KEY (user_id)
 ) WITHOUT ROWID;
 
 
@@ -19,4 +19,4 @@ INSERT INTO users VALUES("9c5917f9220d405ba4e8f99dfced61b8", "MichelleObama", "M
 
 INSERT INTO users VALUES("04afc24ada134e1a8e928134a9926fe5", "shakira", "Shakira", "", "57700000", "17", "7999", "04afc24ada134e1a8e928134a9926fe5.jpg");
 
-INSERT INTO users VALUES("cd6a5c5aee914a1abd14d880deff31e3", "malte", "Malte", "Skjoldager", "66600000", "123", "1000", "");
+INSERT INTO users(user_id, user_username, user_first_name, user_last_name, user_total_followers,user_total_following, user_total_tweets) VALUES("cd6a5c5aee914a1abd14d880deff31e3", "malte", "Malte", "Skjoldager", "666000", "123", "1000");

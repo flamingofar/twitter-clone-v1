@@ -1,4 +1,12 @@
 from bottle import get, template
+import sqlite3
+import os
+
+############################## MAKES A DICTIONARY FROM SQLITE DATA
+def dict_factory(cursor, row):
+  col_names = [col[0] for col in cursor.description]
+  return {key: value for key, value in zip(col_names, row)}
+##############################
 
 data = {"tweets": [
 		{
@@ -73,6 +81,20 @@ data = {"tweets": [
 	]
 }
 
+
+
 @get("/")
 def _():
-    return template('index', title="Twitter", name="Malte Skjoldager", tweets=data["tweets"], trends=data["trends"], who_to_follow=data["who_to_follow"])
+	try:
+		db = sqlite3.connect(os.getcwd()+"/twitter.db")
+		db.row_factory = dict_factory
+		users = db.execute("SELECT * FROM users ORDER BY RANDOM() LIMIT 3").fetchall()
+		tweets = db.execute("SELECT * FROM tweets JOIN users ON users.user_id = tweets.tweet_user_fk ORDER BY tweet_created_at DESC").fetchall()
+		print(tweets)
+
+		return template('index', tweets=tweets, title="Twitter", name="Malte Skjoldager", trends=data["trends"], who_to_follow=users)
+	except Exception as ex:
+		print(ex)
+		return ex
+	finally:
+		if("db" in locals()): db.close()
