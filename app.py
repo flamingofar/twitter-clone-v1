@@ -5,7 +5,7 @@ import git
 
 
 #*############################# CONNECTS GITHUB AND PYTHONANYWHERE
-@post('/secret_url_for_git_hook')
+@post('/13e4520155514c39be45e5d5cdac559c')
 def git_update():
   repo = git.Repo('./twitter-clone-v1')
   origin = repo.remotes.origin
@@ -43,4 +43,4 @@ try:
 except Exception as ex:
     print(ex)
     print("Running on localhost")
-    run(host='127.0.0.1', port=3000, reloader=True, debug=True)
+    run(host='127.0.0.1', port=4000, reloader=True, debug=True)

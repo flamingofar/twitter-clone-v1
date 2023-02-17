@@ -96,7 +96,7 @@ def _(username):
       # Get the user's ID
       user_id = user["id"]
       print("#"*30)
-      print(f"user id: {user_id}")
+      print(f"user id: {user}")
 
       # With that id, look up the repectives tweets
       tweets = db.execute("SELECT * FROM tweets JOIN users ON users.id = tweets.user_fk WHERE tweets.user_fk = ?",(user_id,)).fetchall()
