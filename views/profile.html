@@ -128,7 +128,11 @@
 			<div  class="flex gap-4 p-4 border-t col-span-full border-neutral-800">
 				<div class="flex flex-col items-end flex-shrink-0 gap-3 pt-1 md:w-1/12">
 					<div class="w-12 overflow-hidden rounded-full">
-						<img src="./images/default_profile.png" alt="" />
+						% if user['user_avatar'] != None :
+							<img class="w-full" src="./images/{{user['user_avatar']}}" alt="" />
+						% else :
+							<img class="w-full" src="./images/default_profile.png" alt="" />
+						% end
 					</div>
 				</div>
 				<div class="w-full min-w-0">

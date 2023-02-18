@@ -92,12 +92,12 @@ def _(username):
 		db.row_factory = dict_factory
 		user = db.execute("SELECT * FROM users WHERE user_username=? COLLATE NOCASE", (username,)).fetchall()[0]
 		users = db.execute("SELECT * FROM users ORDER BY RANDOM() LIMIT 3").fetchall()
-
 		# Get the user's ID
 		user_id = user["user_id"]
 
 		# With that id, look up the repectives tweets
 		tweets = db.execute("SELECT * FROM tweets JOIN users ON users.user_id = tweets.tweet_user_fk WHERE tweets.tweet_user_fk = ?",(user_id,)).fetchall()
+		print(tweets)
 
 		# The simple way of doing it
 		# tweets = db.execute("SELECT * FROM tweets WHERE user_fk = ?", (user_id,)).fetchall()

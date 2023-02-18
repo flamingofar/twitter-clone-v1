@@ -647,6 +647,10 @@ img {
   margin-bottom: 0.5rem;
 }
 
+.mt-7 {
+  margin-top: 1.75rem;
+}
+
 .inline-block {
   display: inline-block;
 }
@@ -716,8 +720,16 @@ img {
   height: fit-content;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .min-h-\[8rem\] {
   min-height: 8rem;
+}
+
+.min-h-\[10rem\] {
+  min-height: 10rem;
 }
 
 .w-screen {
@@ -1004,6 +1016,11 @@ img {
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
+.border-neutral-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(82 82 82 / var(--tw-border-opacity));
+}
+
 .bg-inherit {
   background-color: inherit;
 }
@@ -1036,6 +1053,16 @@ img {
 .bg-zinc-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(24 24 27 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity));
+}
+
+.bg-sky-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
 }
 
 .fill-zinc-600 {
@@ -1099,6 +1126,16 @@ img {
   padding-bottom: 0.25rem;
 }
 
+.py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 .pt-3 {
   padding-top: 0.75rem;
 }
@@ -1131,13 +1168,16 @@ img {
   padding-top: 1.5rem;
 }
 
-.text-center {
-  text-align: center;
+.pl-4 {
+  padding-left: 1rem;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
+.pt-5 {
+  padding-top: 1.25rem;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-3xl {
@@ -1363,6 +1403,45 @@ img {
   content: var(--tw-content);
 }
 
+.absolute_center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  --tw-translate-x: -50%;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.backdrop {
+  position: absolute;
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(186 230 253 / 0.2);
+}
+
+.character_progress {
+  --progress-bg: rgb(14 165 233);
+  --progress-base: 0deg;
+  background: conic-gradient(
+		var(--progress-bg) var(--progress-base) var(--used-characters),
+		transparent var(--progress) var(--total-characters)
+	);
+}
+
+.character_progress::before {
+  content: attr(data-char-exceed);
+  top: 50%;
+  left: 50%;
+  display: block;
+  position: absolute;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  font-size: small;
+  color: red;
+}
+
 .before\:absolute::before {
   content: var(--tw-content);
   position: absolute;
@@ -1468,6 +1547,11 @@ img {
   z-index: -10;
 }
 
+.after\:block::after {
+  content: var(--tw-content);
+  display: block;
+}
+
 .after\:h-1::after {
   content: var(--tw-content);
   height: 0.25rem;
@@ -1488,6 +1572,11 @@ img {
   height: 2.25rem;
 }
 
+.after\:h-3\/4::after {
+  content: var(--tw-content);
+  height: 75%;
+}
+
 .after\:w-full::after {
   content: var(--tw-content);
   width: 100%;
@@ -1506,6 +1595,11 @@ img {
 .after\:w-9::after {
   content: var(--tw-content);
   width: 2.25rem;
+}
+
+.after\:w-3\/4::after {
+  content: var(--tw-content);
+  width: 75%;
 }
 
 .after\:-translate-x-1\/2::after {
@@ -1535,6 +1629,12 @@ img {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
   background-color: rgb(64 64 64 / var(--tw-bg-opacity));
+}
+
+.after\:bg-black::after {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .after\:transition::after {
@@ -1790,8 +1890,17 @@ img {
   border-radius: 9999px;
 }
 
+.\[\&\>li\]\:px-4>li {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .\[\&\>i\]\:pt-\[0\.5px\]>i {
   padding-top: 0.5px;
+}
+
+.\[\&\>g\]\:fill-neutral-800>g {
+  fill: #262626;
 }
 
 @media (min-width: 1024px) {
@@ -1823,19 +1932,10 @@ img {
   padding-bottom: 0.75rem;
 }
 
-.\[\&\>li\]\:px-4>li {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 @media (min-width: 1280px) {
   .\[\&\>li\]\:xl\:w-full>li {
     width: 100%;
   }
-}
-
-.\[\&\>g\]\:fill-neutral-800>g {
-  fill: #262626;
 }
 
 .\[\&\>span\]\:w-full>span {
