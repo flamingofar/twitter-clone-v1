@@ -41,3 +41,32 @@
 .notification {
 	@apply relative after:absolute after:-top-[2px] after:left-[18px] after:h-2 after:w-2 after:rounded-full after:border after:border-black after:bg-sky-400 after:content-[''];
 }
+
+.absolute_center {
+	@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+.backdrop {
+	@apply absolute z-10 h-screen w-screen bg-sky-200/20;
+}
+
+.character_progress {
+	--progress-bg: rgb(14 165 233);
+	--progress-base: 0deg;
+	background: conic-gradient(
+		var(--progress-bg) var(--progress-base) var(--used-characters),
+		transparent var(--progress) var(--total-characters)
+	);
+}
+.character_progress::before {
+	content: attr(data-char-exceed);
+	top: 50%;
+	left: 50%;
+	display: block;
+	position: absolute;
+	border-radius: 9999px;
+	transform: translate(-50%, -50%);
+	z-index: 20;
+	font-size: small;
+	color: red;
+}
