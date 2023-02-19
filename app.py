@@ -23,6 +23,7 @@ import routes.profile
 import routes.login
 import routes.signup
 import routes.error
+import routes.to_follow
 
 #*############################# API's
 # Usually API's do not return HTML. But most likely JSON
@@ -31,6 +32,7 @@ import api.create_user
 import api.update_user
 import api.delete_user
 import api.get_all
+import api.create_tweet
 
 
 #!################# Run on host or locally

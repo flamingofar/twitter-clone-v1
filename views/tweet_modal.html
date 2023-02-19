@@ -1,17 +1,13 @@
-<div data-tweet-modal-container class="backdrop">
+<div data-tweet-modal-container class="sticky top-0 hidden backdrop">
 	<aside data-tweet-modal class="bg-black w-[38rem] absolute_center rounded-2xl">
 		<i data-tweet-modal-close class="pt-4 pl-4 cursor-pointer fa-solid fa-xmark"></i>
 		<div class="flex gap-4 p-4">
 			<div class="w-12 overflow-hidden rounded-full h-fit shrink-0">
-				% if user['user_avatar'] != None :
-				<img class="w-full" src="./images/{{user['user_avatar']}}" alt="" />
-				% else :
 				<img class="w-full" src="./images/default_profile.png" alt="" />
-				% end
 			</div>
-			<form class="flex flex-col w-full">
+			<form action="/tweet" method="get" class="flex flex-col w-full">
 				<div
-					class="flex items-center gap-2 px-3 py-0.5 text-xs border rounded-full w-fit border-neutral-600 text-sky-500"
+					class="flex items-center gap-2 px-3 py-0.5 text-xs border rounded-full w-fit border-neutral-600 text-sky-500 cursor-not-allowed"
 				>
 					Everyone
 					<i class="fa-solid fa-chevron-down"></i>
@@ -22,8 +18,9 @@
 					placeholder="What's happening"
 					class="outline-none h-auto min-h-[10rem] resize-none bg-inherit mt-7"
 				></textarea>
-				<div class="flex gap-2 p-3 text-sm w-fit text-sky-500">
-					<span><i class="fa-solid fa-earth-americas"></i></span> Everyone can reply
+				<div class="flex gap-2 p-3 text-sm w-fit text-sky-500 cursor-not-allow">
+					<span class="cursor-not-allow"><i class="ed fa-solid fa-earth-americas"></i></span>
+					Everyone can reply
 				</div>
 				<div class="flex gap-4 border-t border-neutral-800 pt-5 [&>i]:pt-[0.5px]">
 					<i class="pl-2 fa-regular fa-image text-sky-400"></i>
@@ -53,6 +50,7 @@
 							></div>
 						</div>
 						<button
+							type="submit"
 							class="px-4 py-2 text-sm transition duration-200 rounded-full bg-sky-400 hover:bg-sky-500"
 						>
 							Tweet
@@ -63,5 +61,3 @@
 		</div>
 	</aside>
 </div>
-
-<script defer></script>

@@ -29,10 +29,10 @@
 				<img src="./images/default_profile.png" alt="" />
 			</div>
 		</div>
-		<div class="w-full">
+		<form action="/tweet" method="get" class="w-full">
 			<textarea
-				name="tweet"
-				id="tweet"
+				name="message"
+				id="message"
 				class="w-full pt-3 outline-none resize-none bg-inherit"
 				placeholder="Whats happening"
 			></textarea>
@@ -54,12 +54,13 @@
 				<i class="fa-regular fa-calendar text-sky-400"></i>
 				<i class="fa-solid fa-location-dot text-sky-400 opacity-60"></i>
 				<button
+					type="submit"
 					class="px-4 py-2 ml-auto text-sm transition duration-200 rounded-full bg-sky-400 hover:bg-sky-500"
 				>
 					Tweet
 				</button>
 			</div>
-		</div>
+		</form>
 	</div>
 	<!-- End tweet box -->
 

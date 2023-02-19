@@ -1,3 +1,4 @@
+from bottle import get,template
 from bottle import get, template
 import sqlite3
 import os
@@ -85,38 +86,17 @@ def dict_factory(cursor, row):
 
 
 
-@get("/<username>")
-def _(username):
+@get("/suggestions")
+def _():
 	try:
 		db = sqlite3.connect(os.getcwd()+"/twitter.db")
 		db.row_factory = dict_factory
-		user = db.execute("SELECT * FROM users WHERE user_username=? COLLATE NOCASE", (username,)).fetchall()[0]
-		users = db.execute("SELECT * FROM users ORDER BY RANDOM() LIMIT 3").fetchall()
-		# Get the user's ID
-		user_id = user["user_id"]
+		users = db.execute("SELECT * FROM users ORDER BY RANDOM()").fetchall()
+		print(users)
 
-		# With that id, look up the repectives tweets
-		tweets = db.execute("SELECT * FROM tweets JOIN users ON users.user_id = tweets.tweet_user_fk WHERE tweets.tweet_user_fk = ?",(user_id,)).fetchall()
-		print(tweets)
-
-		# The simple way of doing it
-		# tweets = db.execute("SELECT * FROM tweets WHERE user_fk = ?", (user_id,)).fetchall()
-
-		# Pass the tweets to the view. Template it
-
-		print(user)
-		return template('profile', user = user, tweets=tweets, title=user["user_username"], name="Malte Skjoldager", trends=data["trends"], who_to_follow=users)
+		return template('to_follow',title="Who To Follow", users=users, name="Malte Skjoldager", trends=data["trends"])
 	except Exception as ex:
 		print(ex)
 		return ex
 	finally:
 		if("db" in locals()): db.close()
-
-
-
-
-
-
-# @get("/profile")
-# def _():
-#     return template('profile', title="Twitter", name="Malte Skjoldager", tweets=data["tweets"], trends=data["trends"], who_to_follow=data["who_to_follow"])

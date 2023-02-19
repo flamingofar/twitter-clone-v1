@@ -23,13 +23,26 @@ const textareaAutoGrow = (e) => {
 	e.target.style.height = e.target.scrollHeight + "px";
 	setProgress(e);
 };
+const closeOnBackdrop = (e) => {
+	e.stopPropagation();
+	console.log(e);
+	// this.classList.add("hidden");
+};
+
 tweetModalTextArea.addEventListener("input", textareaAutoGrow);
+
+tweetModalContainer.addEventListener("click", (e) => {
+	if (e.target.classList.contains("backdrop")) {
+		e.target.classList.add("hidden");
+	}
+});
 
 tweetMenuButton.addEventListener("click", () => {
 	tweetModalContainer.classList.remove("hidden");
 });
 tweetModalClose.addEventListener("click", () => {
 	tweetModalContainer.classList.add("hidden");
+	tweetModalTextArea.value = "";
 });
 
 const setProgress = () => {
@@ -55,3 +68,9 @@ const setProgress = () => {
 			.style.setProperty("--progress-bg", "rgb(14 165 233)");
 	}
 };
+
+let form = document.querySelector("[data-tweet-modal] form");
+form.addEventListener("submit", (e) => {
+	e.preventDefault();
+	e.target.submit();
+});
