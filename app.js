@@ -74,3 +74,5 @@ form.addEventListener("submit", (e) => {
 	e.preventDefault();
 	e.target.submit();
 });
+
+//* TEST
