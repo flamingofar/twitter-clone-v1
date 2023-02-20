@@ -66,3 +66,15 @@ INSERT INTO tweets VALUES(
     "0",
     "0"
     );
+INSERT INTO tweets VALUES(
+    "939880c22d0d40ebb6475dbf657e8272",
+    "cd6a5c5aee914a1abd14d880deff31e3",
+    "1676644044",
+    "",
+    "This is a tweet from Malte",
+    "a0e208f43471439b855ea8ce873122aa.jpg",
+    "0",
+    "0",
+    "0",
+    "0"
+    );
