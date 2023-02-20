@@ -3,6 +3,7 @@ import sqlite3
 import os
 import uuid
 import time
+import pathlib
 
 epoch = str(int(time.time()))
 
@@ -27,7 +28,7 @@ def _():
       "tweet_total_replies":"0"
     }
 
-    db = sqlite3.connect(os.getcwd()+"/twitter.db")
+    db = sqlite3.connect(str(pathlib.Path(__file__).parent.parent.resolve()) + "/twitter.db")
     db.row_factory = dict_factory
     db.execute("""INSERT INTO tweets values(?,?,?,?,?,?,?,?,?,?)""", (
        test["tweet_id"],

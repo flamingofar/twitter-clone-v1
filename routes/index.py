@@ -1,6 +1,6 @@
 from bottle import get, template
 import sqlite3
-import os
+import pathlib
 
 
 
@@ -56,7 +56,7 @@ data = {
 def _():
 	try:
 
-		db = sqlite3.connect(os.getcwd()+"/twitter.db")
+		db = sqlite3.connect(str(pathlib.Path(__file__).parent.parent.resolve()) + "/twitter.db")
 		db.row_factory = dict_factory
 		users = db.execute("SELECT * FROM users ORDER BY RANDOM() LIMIT 3").fetchall()
 		tweets = db.execute("SELECT * FROM tweets JOIN users ON users.user_id = tweets.tweet_user_fk ORDER BY tweet_created_at DESC").fetchall()

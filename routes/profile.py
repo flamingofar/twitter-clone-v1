@@ -1,6 +1,6 @@
 from bottle import get, template
 import sqlite3
-import os
+import pathlib
 
 
 data = {"tweets": [
@@ -88,7 +88,7 @@ def dict_factory(cursor, row):
 @get("/<username>")
 def _(username):
 	try:
-		db = sqlite3.connect(os.getcwd()+"/twitter.db")
+		db = sqlite3.connect(str(pathlib.Path(__file__).parent.parent.resolve()) + "/twitter.db")
 		db.row_factory = dict_factory
 		user = db.execute("SELECT * FROM users WHERE user_username=? COLLATE NOCASE", (username,)).fetchall()[0]
 		users = db.execute("SELECT * FROM users ORDER BY RANDOM() LIMIT 3").fetchall()
