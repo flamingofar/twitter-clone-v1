@@ -2,6 +2,10 @@ from bottle import get, template, request, redirect
 import sqlite3
 import os
 import uuid
+import time
+
+epoch = str(int(time.time()))
+
 ############################## MAKES A DICTIONARY FROM SQLITE DATA
 def dict_factory(cursor, row):
   col_names = [col[0] for col in cursor.description]
@@ -14,7 +18,6 @@ def _():
     test = {
       "tweet_id": id,
       "tweet_user_fk": "cd6a5c5aee914a1abd14d880deff31e3",
-      "tweet_created_at":"1676801134",
       "tweet_updated_at":"",
       "tweet_message":request.GET.get("message",""),
       "tweet_image":"",
@@ -29,7 +32,7 @@ def _():
     db.execute("""INSERT INTO tweets values(?,?,?,?,?,?,?,?,?,?)""", (
        test["tweet_id"],
        test["tweet_user_fk"],
-       test["tweet_created_at"],
+       epoch,
        test["tweet_updated_at"],
        test["tweet_message"],
        test["tweet_image"],
