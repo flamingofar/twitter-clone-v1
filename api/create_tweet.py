@@ -4,8 +4,12 @@ import os
 import uuid
 import time
 import pathlib
+import urllib.parse
 
 epoch = str(int(time.time()))
+
+def decodeURL(string):
+    return string.encode("latin-1").decode("UTF-8")
 
 ############################## MAKES A DICTIONARY FROM SQLITE DATA
 def dict_factory(cursor, row):
@@ -20,7 +24,7 @@ def _():
       "tweet_id": id,
       "tweet_user_fk": "cd6a5c5aee914a1abd14d880deff31e3",
       "tweet_updated_at":"",
-      "tweet_message":request.GET.get("message",""),
+      "tweet_message":decodeURL(request.GET.get("message","")),
       "tweet_image":"",
       "tweet_total_likes":"0",
       "tweet_total_retweets":"0",
@@ -43,7 +47,6 @@ def _():
        test["tweet_total_replies"]
        ))
     db.commit()
-    print(test)
     redirect("/")
   except Exception as ex:
     print(ex)

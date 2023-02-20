@@ -84,7 +84,7 @@
 
 	% for tweet in tweets:
 	<!-- Posted tweet 1 -->
-	<div data-tweet>
+	<div data-tweet data-tweet-id="{{tweet['tweet_id']}}">
 		<div class="flex gap-4 p-4 border-t col-span-full border-neutral-800">
 			<div class="flex flex-col items-end w-1/12 gap-3 pt-1">
 				<svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 [&>g]:fill-neutral-800">
@@ -121,9 +121,9 @@
 						><strong>@</strong>{{tweet["user_username"]}} &#x2022;
 						<span data-tweet-created-at> {{tweet["tweet_created_at"]}}</span></span
 					>
-					<a href="#" class="ml-auto group"
-						><i class="text-gray-500 fa-solid fa-xmark group-hover:text-sky-400"></i
-					></a>
+					<a href="/delete-tweet/{{tweet['tweet_id']}}" data-close class="ml-auto group">
+						<i class="text-gray-500 fa-solid fa-xmark group-hover:text-sky-400"></i>
+					</a>
 				</span>
 				<p class="text-lg">{{tweet["tweet_message"]}}</p>
 				% if tweet['tweet_image'] != "":

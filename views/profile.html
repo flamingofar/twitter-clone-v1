@@ -125,7 +125,7 @@
 
 		<!-- Tweets -->
 		% for tweet in tweets:
-		<div data-tweet>
+		<div data-tweet data-tweet-id="{{tweet['tweet_id']}}">
 			<div  class="flex gap-4 p-4 border-t col-span-full border-neutral-800">
 				<div class="flex flex-col items-end flex-shrink-0 gap-3 pt-1 md:w-1/12">
 					<div class="w-12 overflow-hidden rounded-full">

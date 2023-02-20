@@ -75,4 +75,23 @@ form.addEventListener("submit", (e) => {
 	e.target.submit();
 });
 
-//* TEST
+//* REMOVE TWEET
+tweets.forEach((tweet) => {
+	tweet.querySelector("button").addEventListener("click", () => {
+		const tweetID = tweet.dataset.tweetId;
+		tweet.classList.add("hidden");
+		console.log(tweetID);
+		deleteTweetDB(tweet);
+	});
+});
+
+// const deleteTweetDB = async (id) => {
+// 	fetch("/delete-tweet", {
+// 		method: "POST",
+// 		headers: {
+// 			Accept: "application/json",
+// 			"Content-Type": "application/json",
+// 		},
+// 		body: JSON.stringify({ id: id }),
+// 	});
+// };
