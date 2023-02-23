@@ -67,10 +67,10 @@
 					class="flex items-start gap-4 p-3 transition duration-200 cursor-pointer hover:bg-zinc-800"
 				>
 					<div class="w-12 overflow-hidden rounded-full h-fit">
-						% if follow['user_avatar'] != None :
-						<img class="w-full shrink-0" src="./images/{{follow['user_avatar']}}" alt="" />
-						% else :
-						<img class="w-full shrink-0" src="./images/default_profile.png" alt="" />
+						% if follow.get("user_avatar",):
+						<img class="w-full shrink-0" src="images/{{follow['user_avatar']}}" alt="" />
+						% else:
+						<img class="w-full shrink-0" src="images/default_profile.png" alt="" />
 						% end
 					</div>
 					<div class="flex flex-col truncate">

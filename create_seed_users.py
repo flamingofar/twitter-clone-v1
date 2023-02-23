@@ -4,18 +4,17 @@ import random
 from faker import Faker
 
 fake = Faker()
-db = sqlite3.connect("twitter.db")
+db = sqlite3.connect("company.db")
 
 # Creating Table
 db.executescript(
   """
   BEGIN;
-  DROP TABLE IF EXISTS users;
-  CREATE TABLE users(
-    id        TEXT,
-    name      TEXT,
-    lastname  TEXT,
-    email     TEXT UNIQUE,
+  DROP TABLE IF EXISTS customers;
+  CREATE TABLE customers(
+    id                  TEXT,
+    customer_firstname  TEXT,
+    customer_total_tweets TEXT,
     PRIMARY KEY(id)
   ) WITHOUT ROWID;
 
@@ -24,10 +23,9 @@ db.executescript(
 )
 
 # Seeding table
-for x in range(100):
+for x in range(1000000):
   id = str(uuid.uuid4())
-  name = fake.first_name()
-  lastname = fake.last_name()
-  email = name.lower() + str(id.replace("-", "")) + fake.free_email_domain()
-  db.execute("INSERT INTO users(id, name, lastname, email) VALUES(?, ?, ?, ?)",(id, name, lastname, email))
+  customer_firstname = fake.first_name()
+  customer_total_tweets = "1"
+  db.execute("INSERT INTO customers(id, customer_firstname, customer_total_tweets) VALUES(?, ?, ?)",(id, customer_firstname, customer_total_tweets))
 db.commit()

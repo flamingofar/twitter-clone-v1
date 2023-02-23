@@ -19,7 +19,7 @@ import assets.load_images
 
 #*############################# Routes
 import routes.index
-import routes.profile
+import routes.user
 import routes.login
 import routes.signup
 import routes.error

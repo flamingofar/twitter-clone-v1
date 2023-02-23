@@ -1,13 +1,34 @@
 //! TWEET ENOCH DATE CONVERTER
-const tweets = [...document.querySelectorAll("[data-tweet]")];
-let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-tweets.forEach((tweet) => {
-	let createdAt = tweet.querySelector("[data-tweet-created-at]");
+const convertEnoch = (createdAt, type) => {
+	let month = [
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"Juli",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+	];
 	let createdAtNr = +createdAt.innerText;
-
+	console.log(createdAtNr);
 	date = new Date(0);
 	date.setUTCSeconds(createdAtNr);
-	createdAt.innerText = `${month[date.getUTCMonth()]} ${date.getUTCDate()}`;
+
+	if (type == "tweet") return `${month[date.getUTCMonth()].substring(0, 3)} ${date.getUTCDate()}`;
+	if (type == "joined") return `${month[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+};
+const tweets = [...document.querySelectorAll("[data-tweet]")];
+const joined = document.querySelector("[data-joined]");
+
+if (joined) joined.innerText = convertEnoch(joined, "joined");
+tweets.forEach((tweet) => {
+	let createdAt = tweet.querySelector("[data-tweet-created-at]");
+	createdAt.innerText = convertEnoch(createdAt, "tweet");
 });
 
 //! TWEET MODAL
@@ -75,23 +96,50 @@ form.addEventListener("submit", (e) => {
 	e.target.submit();
 });
 
-//* REMOVE TWEET
-tweets.forEach((tweet) => {
-	tweet.querySelector("button").addEventListener("click", () => {
-		const tweetID = tweet.dataset.tweetId;
-		tweet.classList.add("hidden");
-		console.log(tweetID);
-		deleteTweetDB(tweet);
-	});
-});
+//* FORMAT FOLLOWERS FOLLOWING TWEETS NUMBERS
 
-// const deleteTweetDB = async (id) => {
-// 	fetch("/delete-tweet", {
-// 		method: "POST",
-// 		headers: {
-// 			Accept: "application/json",
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify({ id: id }),
-// 	});
-// };
+const abbrNum = (number, decPlaces) => {
+	// 2 decimal places => 100, 3 => 1000, etc
+	number = Number(number);
+	decPlaces = Math.pow(10, decPlaces);
+	console.log(number);
+	if (number < 10000) return number.toLocaleString();
+
+	// Enumerate number abbreviations
+	let abbrev = ["K", "M", "B", "T"];
+
+	// Go through the array backwards, so we do the largest first
+	for (let i = abbrev.length - 1; i >= 0; i--) {
+		// Convert array index to "1000", "1000000", etc
+		let size = Math.pow(10, (i + 1) * 3);
+
+		// If the number is bigger or equal do the abbreviation
+		if (size <= number) {
+			// Here, we multiply by decPlaces, round, and then divide by decPlaces.
+			// This gives us nice rounding to a particular decimal place.
+			number = Math.round((number * decPlaces) / size) / decPlaces;
+
+			// Handle special case where we round up to the next abbreviation
+			if (number == 1000 && i < abbrev.length - 1) {
+				number = 1;
+				i++;
+			}
+
+			// Add the letter for the abbreviation
+			number += abbrev[i];
+
+			// We are done... stop
+			break;
+		}
+	}
+
+	return number;
+};
+
+const totalTweets = document.querySelector("[data-total-tweets]");
+const totalFollowers = document.querySelector("[data-total-followers]");
+const totalFollowing = document.querySelector("[data-total-following]");
+
+totalTweets.textContent = abbrNum(totalTweets.textContent, 1);
+totalFollowers.textContent = abbrNum(totalFollowers.textContent, 2);
+totalFollowing.textContent = abbrNum(totalFollowing.textContent, 1);
