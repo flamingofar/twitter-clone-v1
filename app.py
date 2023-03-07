@@ -24,6 +24,7 @@ import routes.login
 import routes.signup
 import routes.error
 import routes.to_follow
+import routes.profile
 
 #*############################# API's
 # Usually API's do not return HTML. But most likely JSON
@@ -34,6 +35,9 @@ import api.delete_user
 import api.get_all
 import api.create_tweet
 import api.delete_tweet
+
+#*############################# BRIDGES
+import bridges.login
 
 
 #!################# Run on host or locally
@@ -46,4 +50,4 @@ try:
 except Exception as ex:
     print(ex)
     print("Running on localhost")
-    run(host='127.0.0.1', port=4000, reloader=True, debug=True)
+    run(host='127.0.0.1', port=4000, reloader=True, debug=True, server="paste")

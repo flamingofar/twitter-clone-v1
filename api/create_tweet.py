@@ -1,55 +1,56 @@
-from bottle import get, template, request, redirect
+from bottle import post, template, request, redirect,response
 import sqlite3
 import os
 import uuid
-import time
 import pathlib
 import urllib.parse
 
-epoch = str(int(time.time()))
+import g
+
+
 
 def decodeURL(string):
-    return string.encode("latin-1").decode("UTF-8")
+    return str(string.encode("latin-1").decode("UTF-8"))
 
-############################## MAKES A DICTIONARY FROM SQLITE DATA
-def dict_factory(cursor, row):
-  col_names = [col[0] for col in cursor.description]
-  return {key: value for key, value in zip(col_names, row)}
-##############################
-@get("/tweet")
+
+
+@post("/tweet")
 def _():
   try:
-    id = str(uuid.uuid4()).replace("-","")
-    test = {
-      "tweet_id": id,
-      "tweet_user_fk": "cd6a5c5aee914a1abd14d880deff31e3",
-      "tweet_updated_at":"",
-      "tweet_message":decodeURL(request.GET.get("message","")),
-      "tweet_image":"",
-      "tweet_total_likes":"0",
-      "tweet_total_retweets":"0",
-      "tweet_total_views":"0",
-      "tweet_total_replies":"0"
-    }
+    g.validate_tweet()
+    db = g.db()
+    tweet_id = str(uuid.uuid4().hex)
+    tweet_user_fk = "a0e208f43471439b855ea8ce873122aa"
+    print(type(tweet_user_fk))
+    tweet_created_at = g.epoch
+    tweet_updated_at = ""
+    tweet_message = decodeURL(request.forms.get("message"))
+    tweet_image = ""
+    tweet_total_likes = "0"
+    tweet_total_retweets = "0"
+    tweet_total_views = "0"
+    tweet_total_replies = "0"
 
-    db = sqlite3.connect(str(pathlib.Path(__file__).parent.parent.resolve()) + "/twitter.db")
-    db.row_factory = dict_factory
-    db.execute("""INSERT INTO tweets values(?,?,?,?,?,?,?,?,?,?)""", (
-       test["tweet_id"],
-       test["tweet_user_fk"],
-       epoch,
-       test["tweet_updated_at"],
-       test["tweet_message"],
-       test["tweet_image"],
-       test["tweet_total_likes"],
-       test["tweet_total_retweets"],
-       test["tweet_total_views"],
-       test["tweet_total_replies"]
-       ))
+    db.execute("INSERT INTO tweets VALUES(?,?,?,?,?,?,?,?,?,?)",(
+      tweet_id,
+      tweet_user_fk,
+      tweet_created_at,
+      tweet_updated_at,
+      tweet_message,
+      tweet_image,
+      tweet_total_likes,
+      tweet_total_retweets,
+      tweet_total_views,
+      tweet_total_replies)
+      )
+
     db.commit()
-    redirect("/")
+    return {"info":"Tweet created successfully",
+            "tweet_id":tweet_id}
   except Exception as ex:
     print(ex)
-    return ex
+    response.status = 400
+    return {"info":str(ex)}
+
   finally:
-    if("db" in locals()): db.close()
+    pass

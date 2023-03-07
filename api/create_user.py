@@ -7,7 +7,7 @@ def _():
     try:
         # Connect to database
         db = sqlite3.connect("twitter.db")
-        id = str(uuid.uuid4())
+        id = str(uuid.uuid4().hex)
 
         # Set User
         db.execute("INSERT INTO users VALUES (?,?,?)",(id,"Magnus","Nielsen"))

@@ -1,6 +1,8 @@
-<aside class="sticky hidden h-screen pt-4 top-[-30%] lg:col-span-3 lg:flex lg:flex-col">
+<aside class="sticky hidden h-screen pt-4 top-[-30%] lg:flex lg:flex-col">
 	<div class="flex flex-col gap-4">
-		<div class="flex items-center w-full gap-3 px-4 py-3 text-base rounded-full bg-zinc-900">
+		<div
+			class="sticky top-0 flex items-center w-full gap-3 px-4 py-3 text-base rounded-full bg-zinc-900"
+		>
 			<svg
 				viewBox="0 0 24 24"
 				aria-hidden="true"
@@ -85,8 +87,8 @@
 				>
 					<div class="flex flex-col">
 						<span class="text-xs text-gray-500">Trending in Denmark</span>
-						<span class="text-sm font-bold">{{trend["title"]}}</span>
-						<span class="text-xs text-gray-500">{{trend["total_hash"]}} tweets</span>
+						<span class="text-sm font-bold">{{trend["trend_trendname"]}}</span>
+						<span class="text-xs text-gray-500">{{trend["trend_tweets_amount"]}}tweets</span>
 					</div>
 
 					<a

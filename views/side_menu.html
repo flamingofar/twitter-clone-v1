@@ -1,8 +1,6 @@
-<aside
-	class="sticky top-0 flex flex-col items-end h-screen col-span-2 pt-6 sm:col-span-2 md:col-span-2"
->
+<aside class="sticky top-0 flex flex-col items-end h-screen pt-6">
 	<ul
-		class="flex flex-col h-full w-fit justify-center xl:w-full gap-7 [&>li]:xl:w-full [&>li>a>span]:hidden [&>li>a>span]:lg:flex"
+		class="flex flex-col h-full w-fit justify-start xl:w-full gap-7 [&>li]:xl:w-full [&>li>a>span]:hidden [&>li>a>span]:lg:flex"
 	>
 		<li class="flex flex-col items-center xl:items-start">
 			<ul
@@ -37,6 +35,8 @@
 						<span>Explore</span>
 					</a>
 				</li>
+				<!-- prettier-ignore -->
+				% if  cookie_user:
 				<li>
 					<a href="#">
 						<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-style">
@@ -86,7 +86,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="/malte">
+					<a href="/profile">
 						<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-style">
 							<g>
 								<path
@@ -126,24 +126,61 @@
 						</svg>
 					</button>
 				</li>
+				%end
 			</ul>
 		</li>
 
+		<!-- prettier-ignore -->
+		% if(cookie_user):
 		<li class="mx-auto mt-auto">
-			<div class="flex items-start justify-end gap-10 mb-2 xl:justify-between">
+			<div class="relative flex items-start justify-end gap-10 mb-2 xl:justify-between">
 				<div class="flex items-start flex-auto min-w-0 gap-3">
 					<div class="flex-shrink-0 w-10 overflow-hidden rounded-full">
+						%if user.get("user_avatar"):
+						<img src="./images/{{user['user_avatar']}}" alt="" />
+						%else:
 						<img src="./images/default_profile.png" alt="" />
+						%end
 					</div>
 					<div class="flex-col hidden [&>span]:truncate xl:flex flex-shrink truncate">
-						<span class="text-base"> {{name}} </span>
-						<span class="text-sm text-neutral-600">@flamingofar</span>
+						<span class="text-base"> {{user["user_first_name"]}} {{user["user_last_name"]}}</span>
+						<span class="text-sm text-neutral-600">@{{user["user_username"]}}</span>
 					</div>
 				</div>
-				<a href="#" class="flex-auto hidden xl:flex"
-					><i class="text-gray-500 fa-solid fa-ellipsis group-hover:text-sky-400"></i
-				></a>
+				<button
+					data-profile-logout-btn
+					href="#"
+					class="flex items-center p-2 ml-auto transition duration-200 rounded-full group hover:bg-sky-400/10"
+				>
+					<i class="text-gray-500 fa-solid fa-ellipsis group-hover:text-sky-400"></i>
+				</button>
+
+				<div
+					data-profile-logout
+					class="absolute left-0 z-0 flex flex-col items-start justify-start hidden gap-3 py-3 text-sm bg-black rounded-2xl w-fit -top-28 shadow-chat"
+				>
+					<a
+						class="w-full px-4 py-1 transition duration-200 hover:bg-neutral-700 whitespace-nowrap"
+						href="#"
+						>Add an existing account</a
+					>
+					<a
+						class="w-full px-4 py-1 transition duration-200 hover:bg-neutral-700 whitespace-nowrap"
+						href="/logout"
+						>Log out @{{user["user_username"]}}</a
+					>
+				</div>
 			</div>
 		</li>
+		% end
 	</ul>
 </aside>
+
+<script>
+	const profileLogout = document.querySelector("[data-profile-logout]");
+	const profileLogoutBtn = document.querySelector("[data-profile-logout-btn]");
+
+	profileLogoutBtn.addEventListener("click", () => {
+		profileLogout.classList.toggle("hidden");
+	});
+</script>

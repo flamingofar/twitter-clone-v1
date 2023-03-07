@@ -5,7 +5,14 @@
 			<div class="w-12 overflow-hidden rounded-full h-fit shrink-0">
 				<img class="w-full" src="./images/default_profile.png" alt="" />
 			</div>
-			<form action="/tweet" method="GET" class="flex flex-col w-full">
+			<form
+				data-validate
+				data-min="1"
+				data-max="280"
+				onsubmit="validate(tweet); return false"
+				method="POST"
+				class="flex flex-col w-full"
+			>
 				<div
 					class="flex items-center gap-2 px-3 py-0.5 text-xs border rounded-full w-fit border-neutral-600 text-sky-500 cursor-not-allowed"
 				>
@@ -61,3 +68,5 @@
 		</div>
 	</aside>
 </div>
+
+<script></script>

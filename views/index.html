@@ -1,11 +1,19 @@
 % include('header')
-<main class="grid h-full max-w-3xl grid-cols-12 mx-auto lg:max-w-7xl lg:gap-6">
+<main class="grid h-full max-w-3xl grid-cols-[0.8fr_2fr_1.2fr] mx-auto lg:max-w-7xl lg:gap-6">
 	<!-- Left -->
 	% include('side_menu')
 	<!-- End left -->
 
 	<!-- Center -->
+
+
+	% if cookie_user:
 	% include('feed')
+	% end
+
+	% if not cookie_user:
+	% include('trends')
+	% end
 	<!-- End center -->
 
 	<!-- Right -->

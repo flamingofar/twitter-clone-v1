@@ -1,45 +1,7 @@
-from bottle import get, template
+from bottle import get, template,response,request
 import sqlite3
 import pathlib
-
-
-data = {
-	"trends": [
-		{
-			"title": "One",
-			"total_hash": 1
-		},
-		{
-			"title": "two",
-			"total_hash": 2
-		},
-		{
-			"title": "three",
-			"total_hash": 3
-		},
-		{
-			"title": "four",
-			"total_hash": 4
-		}
-	],
-	"who_to_follow": [
-		{
-			"profile_image": "1.jpg",
-			"full_name": "Elon Musk",
-			"twitter_tag": "elonmusk"
-		},
-		{
-			"profile_image": "codepen.jpg",
-			"full_name": "Codepen",
-			"twitter_tag": "codepen"
-		},
-		{
-			"profile_image": "tailwind.jpg",
-			"full_name": "TailwindCSS",
-			"twitter_tag": "tailwindcss"
-		}
-	]
-}
+import g
 
 
 ############################## MAKES A DICTIONARY FROM SQLITE DATA
@@ -52,6 +14,11 @@ def dict_factory(cursor, row):
 
 @get("/<username>")
 def _(username):
+	response.set_header("Cache-Control", "no-cache, no-store, must-revalidate, max-age=0")
+	response.set_header("Pragma", "no-cache")
+	response.set_header("Expires", "0")
+
+	cookie_user = request.get_cookie("user", secret=g.AUTH_SECRET)
 	try:
 		db = sqlite3.connect(str(pathlib.Path(__file__).parent.parent.resolve()) + "/twitter.db")
 		db.row_factory = dict_factory
@@ -64,9 +31,11 @@ def _(username):
 		# With that id, look up the repectives tweets
 		tweets = db.execute("SELECT * FROM tweets WHERE tweets.tweet_user_fk = ? ORDER BY tweet_created_at DESC",(user_id,)).fetchall()
 
-		return template('user', user = user, tweets=tweets, title=user["user_username"], name="Malte Skjoldager", trends=data["trends"], who_to_follow=users)
+		trends = db.execute("SELECT * FROM trends LIMIT 5").fetchall()
+
+		return template('user', user = user, tweets=tweets, title="Twitter", name="Malte Skjoldager", trends=trends, who_to_follow=users, cookie_user=cookie_user)
 	except Exception as ex:
-		print(ex)
+		print("***************************"+str(ex))
 		return ex
 	finally:
 		if("db" in locals()): db.close()
