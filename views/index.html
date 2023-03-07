@@ -5,8 +5,6 @@
 	<!-- End left -->
 
 	<!-- Center -->
-
-
 	% if cookie_user:
 	% include('feed')
 	% end
@@ -19,8 +17,10 @@
 	<!-- Right -->
 	% include("side_right")
 	<!-- End right -->
+
 </main>
 <!-- Chat -->
+% if cookie_user:
 <div
 	data-chat
 	class="w-3/12 h-1/2 translate-y-[90%] transition duration-300 bg-black fixed flex flex-col gap-2 right-10 bottom-0 shadow-chat py-3 rounded-t-2xl"
@@ -237,6 +237,7 @@
 		</a>
 	</div>
 </div>
+% end
 <!-- End chat -->
 <script>
 	const chat = document.querySelector("[data-chat]");

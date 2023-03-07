@@ -18,8 +18,8 @@ def _():
     response.set_header("Pragma", "no-cache")
     response.set_header("Expires", "0")
 
+    cookie_user = request.get_cookie("user", secret=g.AUTH_SECRET)
     try:
-        cookie_user = request.get_cookie("user", secret=g.AUTH_SECRET)
         print(cookie_user["user_name"])
         db = sqlite3.connect(str(pathlib.Path(__file__).parent.parent.resolve()) + "/twitter.db")
         db.row_factory = dict_factory
