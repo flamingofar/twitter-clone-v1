@@ -1,5 +1,8 @@
 <div data-tweet-modal-container class="sticky top-0 hidden backdrop">
-	<aside data-tweet-modal class="bg-black w-[38rem] absolute_center rounded-2xl">
+	<aside
+		data-tweet-modal
+		class="w-screen h-screen md:h-fit bg-black md:w-[38rem] absolute_center rounded-2xl"
+	>
 		<i data-tweet-modal-close class="pt-4 pl-4 cursor-pointer fa-solid fa-xmark"></i>
 		<div class="flex gap-4 p-4">
 			<div class="w-12 overflow-hidden rounded-full h-fit shrink-0">
@@ -30,8 +33,12 @@
 					Everyone can reply
 				</div>
 				<div class="flex gap-4 border-t border-neutral-800 pt-5 [&>i]:pt-[0.5px]">
-					<i class="pl-2 fa-regular fa-image text-sky-400"></i>
-					<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-sky-400" viewBox="0 0 24 24">
+					<i class="pl-2 shrink-0 fa-regular fa-image text-sky-400"></i>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="w-6 h-6 shrink-0 text-sky-400"
+						viewBox="0 0 24 24"
+					>
 						<path
 							fill="currentColor"
 							d="M8.5 14h1q.425 0 .713-.288q.287-.287.287-.712v-1h-1v1h-1v-2h2q0-.425-.287-.713Q9.925 10 9.5 10h-1q-.425 0-.712.287q-.288.288-.288.713v2q0 .425.288.712q.287.288.712.288Zm3 0h1v-4h-1Zm2 0h1v-1.5H16v-1h-1.5V11h2v-1h-3ZM5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h14q.825 0 1.413.587Q21 4.175 21 5v14q0 .825-.587 1.413Q19.825 21 19 21Zm0-2h14V5H5v14ZM5 5v14V5Z"
@@ -39,7 +46,7 @@
 					</svg>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						class="w-6 h-6 text-sky-400"
+						class="w-6 h-6 shrink-0 text-sky-400"
 						viewBox="0 0 256 256"
 					>
 						<path

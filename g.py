@@ -1,10 +1,12 @@
 
-from bottle import request
+from bottle import request,response
 import sqlite3
 import pathlib
 import time
 
 AUTH_SECRET = "b1f1f886-fef1-49f1-9787-0c5945dcf56fd5979325-2e99-48c4-9b82-0152e8014dbdcbfeeda8-0ff0-4fd3-8f38-8964936f45f6"
+
+
 
 ############################## MAKES A DICTIONARY FROM SQLITE DATA
 def dict_factory(cursor, row):
@@ -28,6 +30,14 @@ def db():
     finally:
         pass
 
+
+############################## Set headers
+def set_headers():
+    response.set_header("Cache-Control", "no-cache, no-store, must-revalidate, max-age=0")
+    response.set_header("Pragma", "no-cache")
+    response.set_header("Expires", "0")
+
+############################## VALIDATE TWEET
 TWEET_MIN_LEN = 1
 TWEET_MAX_LEN = 280
 

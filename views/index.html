@@ -1,15 +1,15 @@
 % include('header')
-<main class="grid h-full max-w-3xl grid-cols-[0.8fr_2fr_1.2fr] mx-auto lg:max-w-7xl lg:gap-6">
+<main class="grid h-full max-w-3xl grid-cols-[0.5fr_2fr_1.2fr] lg:grid-cols-[0.8fr_2fr_1.2fr] mx-auto lg:max-w-7xl lg:gap-6">
 	<!-- Left -->
 	% include('side_menu')
 	<!-- End left -->
 
 	<!-- Center -->
-	% if cookie_user:
+	% if user:
 	% include('feed')
 	% end
 
-	% if not cookie_user:
+	% if not user:
 	% include('trends')
 	% end
 	<!-- End center -->
@@ -20,10 +20,10 @@
 
 </main>
 <!-- Chat -->
-% if cookie_user:
+% if user:
 <div
 	data-chat
-	class="w-3/12 h-1/2 translate-y-[90%] transition duration-300 bg-black fixed flex flex-col gap-2 right-10 bottom-0 shadow-chat py-3 rounded-t-2xl"
+	class="w-3/12 h-1/2 translate-y-[90%] transition duration-300 bg-black fixed  flex-col gap-2 right-10 bottom-0 shadow-chat py-3 rounded-t-2xl md:flex hidden"
 >
 	<div data-chat-header class="flex justify-between px-4 cursor-pointer">
 		<h3>Messages</h3>
@@ -239,6 +239,28 @@
 </div>
 % end
 <!-- End chat -->
+
+% if not user:
+<!-- Start login bar -->
+<aside class="fixed bottom-0 w-full py-3 bg-sky-500">
+	<div class="w-full mx-auto justify-evenly lg:max-w-7xl flex md:grid md:grid-cols-[0.8fr_2fr_1.2fr] gap-6">
+
+		<div class="hidden col-start-2 sm:block">
+			<p class="text-2xl font-bold">Don't miss out!</p>
+			<p class="text-sm"> People on twitter get all the news first</p>
+		</div>
+		<div class="flex items-center justify-center gap-2 px-2 w-full md:w-fit md:col-span-1 text-base  col-span-full [&>a]:whitespace-nowrap [&>a]:w-full">
+			<a href="/login" class="inline-block px-3 py-1 font-bold text-center border border-white rounded-full cursor-pointer md:col-span-1 ">
+				Log in
+			</a>
+			<a href="/signup" class="inline-block px-3 py-1 font-bold text-center text-black bg-white border border-white rounded-full cursor-pointer">
+				Sign Up
+			</a>
+		</div>
+	</div>
+</aside>
+<!-- End login bar -->
+%end
 <script>
 	const chat = document.querySelector("[data-chat]");
 	const chatHeader = chat.querySelector("[data-chat-header]");

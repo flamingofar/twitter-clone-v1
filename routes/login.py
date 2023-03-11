@@ -1,5 +1,6 @@
-from bottle import get, template
+from bottle import get, template, request
 
 @get("/login")
 def _():
-    return template('login', title="Twitter | Login")
+    errorMessage = request.query.error
+    return template('login', title="Twitter | Login", errorMessage=errorMessage)

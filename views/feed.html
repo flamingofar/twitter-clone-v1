@@ -1,4 +1,4 @@
-<section class="sm:mx-auto border-x border-neutral-800">
+<section class="col-span-2 sm:mx-auto border-x lg:col-span-1 border-neutral-800">
 	<!-- Home Box -->
 	<div class="sticky top-0 border-b backdrop-blur-md bg-inherit border-neutral-800">
 		<h1 class="p-4 text-xl font-semibold">Home</h1>
@@ -99,7 +99,7 @@
 
 		<div data-tweet data-tweet-id="{{tweet['tweet_id']}}">
 			<div class="flex gap-4 p-4 border-t col-span-full border-neutral-800">
-				<div class="flex flex-col items-end w-1/12 gap-3 pt-1">
+				<div class="flex flex-col items-end w-12 gap-3 pt-1">
 					<svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 [&>g]:fill-neutral-800">
 						<g>
 							<path
@@ -109,9 +109,9 @@
 					</svg>
 					<div class="overflow-hidden rounded-full">
 						% if tweet.get("user_avatar",):
-						<img class="w-full shrink-0" src="images/{{tweet['user_avatar']}}" alt="" />
+						<img class="w-full" src="images/{{tweet['user_avatar']}}" alt="" />
 						% else:
-						<img class="w-full shrink-0" src="images/default_profile.png" alt="" />
+						<img class="w-full" src="images/default_profile.png" alt="" />
 						% end
 					</div>
 				</div>
@@ -146,7 +146,9 @@
 					% if tweet['tweet_image'] != "":
 					<img class="w-full pt-2" src="./images/{{tweet['tweet_image']}}" alt="" />
 					% end
-					<div class="flex gap-14 py-4 [&>span]:cursor-pointer text-gray-500 text-sm">
+					<div
+						class="flex justify-between md:gap-14 py-4 [&>span]:cursor-pointer text-gray-500 text-sm"
+					>
 						<span class="flex items-center gap-3 transition duration-500 ease-linear group">
 							<i
 								class="fa-regular fa-comment relative scale-x-[-1] after:absolute after:w-7 after:h-7 after:content-[''] after:-translate-x-1/2 after:-translate-y-1/2 after:top-1/2 after:left-1/2 after:rounded-full transition duration-500 after:transition after:duration-500 group-hover:after:bg-sky-400/20 group-hover:text-sky-500 group-hover:after:text-sky-500"

@@ -1,3 +1,5 @@
+let INDEX_URL = "http://127.0.0.1:4000/";
+
 //! TWEET ENOCH DATE CONVERTER
 const convertEnoch = (createdAt, type) => {
 	let month = [
@@ -15,7 +17,6 @@ const convertEnoch = (createdAt, type) => {
 		"December",
 	];
 	let createdAtNr = +createdAt.innerText;
-	console.log(createdAtNr);
 	date = new Date(0);
 	date.setUTCSeconds(createdAtNr);
 
@@ -36,7 +37,7 @@ const tweetModalTextArea = document.querySelector("[data-tweet-modal] textarea")
 const tweetModalClose = document.querySelector("[data-tweet-modal-close]");
 const tweetModalContainer = document.querySelector("[data-tweet-modal-container]");
 const tweetCharacterProgress = document.querySelector("[data-tweet-modal-container]");
-const tweetMenuButton = document.querySelector("[data-tweet-button-menu]");
+const tweetMenuButtons = document.querySelectorAll("[data-tweet-button-menu]");
 
 const textareaAutoGrow = (e) => {
 	e.target.style.height = "auto";
@@ -55,9 +56,13 @@ tweetModalContainer.addEventListener("click", (e) => {
 	}
 });
 
-tweetMenuButton.addEventListener("click", () => {
-	tweetModalContainer.classList.remove("hidden");
+tweetMenuButtons.forEach((button) => {
+	button.addEventListener("click", () => {
+		console.log("hi");
+		tweetModalContainer.classList.remove("hidden");
+	});
 });
+
 tweetModalClose.addEventListener("click", () => {
 	tweetModalContainer.classList.add("hidden");
 	tweetModalTextArea.value = "";
@@ -98,9 +103,10 @@ const tweet = async () => {
 
 	const message = frm.querySelector("textarea[name='message']").value;
 	const image = "";
-	document.querySelector("[data-tweets]").insertAdjacentHTML(
-		"afterbegin",
-		`
+	if (window.location.href === INDEX_URL) {
+		document.querySelector("[data-tweets]").insertAdjacentHTML(
+			"afterbegin",
+			`
 		<div data-tweet data-tweet-id="${tweet["tweet_id"]}">
 		<div class="flex gap-4 p-4 border-t col-span-full border-neutral-800">
 			<div class="flex flex-col items-end w-1/12 gap-3 pt-1">
@@ -113,14 +119,14 @@ const tweet = async () => {
 				</svg>
 				<div class="overflow-hidden rounded-full">
 
-					<img class="w-full shrink-0" src="images/default_profile.png" alt="" />
+					<img class="w-full shrink-0" src="images/${data.user_avatar ?? "default_profile.png"}" alt="" />
 
 				</div>
 			</div>
 			<div class="w-full">
 				<span class="flex items-center gap-1"
 					><span class="text-base font-bold"
-						>Malte Skjoldager</span
+						>${data.user_first_name} ${data.user_last_name}</span
 					>
 					<svg
 						class="text-sky-400"
@@ -135,7 +141,7 @@ const tweet = async () => {
 						/>
 					</svg>
 					<span class="text-base text-gray-600"
-						><strong>@</strong>"user_username" &#x2022;
+						><strong>@</strong>${data.user_username} &#x2022;
 						<span data-tweet-created-at> ${epoch}</span></span
 					>
 					<a href="#" data-close class="ml-auto group">
@@ -192,8 +198,9 @@ const tweet = async () => {
 		</div>
 	</div>
 	`
-	);
-	console.log(data);
+		);
+	}
+	tweetModalContainer.classList.add("hidden");
 };
 
 //* FORMAT FOLLOWERS FOLLOWING TWEETS NUMBERS

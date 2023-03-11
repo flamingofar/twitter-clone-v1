@@ -92,25 +92,27 @@ CREATE TABLE users(
     user_username               TEXT NOT NULL UNIQUE,
     user_first_name             TEXT NOT NULL ,
     user_last_name              TEXT DEFAULT "",
+    user_phone_number           TEXT DEFAULT "",
+    user_email                  TEXT DEFAULT "",
     user_description            TEXT,
     user_total_followers        TEXT DEFAULT 0,
     user_total_following        TEXT DEFAULT 0,
     user_total_likes            TEXT DEFAULT 0,
     user_total_tweets           TEXT DEFAULT 0,
     user_avatar                 TEXT UNIQUE,
-    user_cover_image            TEXT UNIQUE,
+    user_cover_image            TEXT ,
     user_created_at             TEXT NOT NULL,
     PRIMARY KEY (user_id)
 ) WITHOUT ROWID;
 
 
-INSERT INTO users VALUES("a0e208f43471439b855ea8ce873122aa", "elonmusk", "Elon", "Musk", "Bacon ipsum dolor amet filet mignon alcatra meatloaf jowl beef pastrami, turducken cow sirloin shankle spare ribs short loin beef ribs salami porchetta.", "128900000", "177","", "22700", "a0e208f43471439b855ea8ce873122aa.jpg","71ffdbb6c7a74a61b8a33ed25a6f1e58.jpeg","1676890161");
+INSERT INTO users VALUES("a0e208f43471439b855ea8ce873122aa", "elonmusk", "Elon", "Musk","1", "elon@musk.com", "Bacon ipsum dolor amet filet mignon alcatra meatloaf jowl beef pastrami, turducken cow sirloin shankle spare ribs short loin beef ribs salami porchetta.", "128900000", "177","", "22700", "a0e208f43471439b855ea8ce873122aa.jpg","71ffdbb6c7a74a61b8a33ed25a6f1e58.jpeg","1676890161");
 
-INSERT INTO users VALUES("9c5917f9220d405ba4e8f99dfced61b8", "MichelleObama", "Michelle", "Obama","Bacon ipsum dolor amet filet mignon alcatra meatloaf jowl beef pastrami, turducken cow sirloin shankle spare ribs short loin beef ribs salami porchetta.", "22200000", "17", "", "2182", "9c5917f9220d405ba4e8f99dfced61b8.jpg","","1677149378");
+INSERT INTO users VALUES("9c5917f9220d405ba4e8f99dfced61b8", "MichelleObama", "Michelle", "Obama","2", "michelle@obama.com","Bacon ipsum dolor amet filet mignon alcatra meatloaf jowl beef pastrami, turducken cow sirloin shankle spare ribs short loin beef ribs salami porchetta.", "22200000", "17", "", "2182", "9c5917f9220d405ba4e8f99dfced61b8.jpg","","1677149378");
 
-INSERT INTO users VALUES("04afc24ada134e1a8e928134a9926fe5", "shakira", "Shakira", "","Bacon ipsum dolor amet filet mignon alcatra meatloaf jowl beef pastrami, turducken cow sirloin shankle spare ribs short loin beef ribs salami porchetta.", "57700000", "17", "", "7999", "04afc24ada134e1a8e928134a9926fe5.jpg","","1675594161");
+INSERT INTO users VALUES("04afc24ada134e1a8e928134a9926fe5", "shakira", "Shakira", "","3", "shakira@shakira.com","Bacon ipsum dolor amet filet mignon alcatra meatloaf jowl beef pastrami, turducken cow sirloin shankle spare ribs short loin beef ribs salami porchetta.", "57700000", "17", "", "7999", "04afc24ada134e1a8e928134a9926fe5.jpg","","1675594161");
 
-INSERT INTO users VALUES("cd6a5c5aee914a1abd14d880deff31e3", "malte", "Malte", "Skjoldager","Bacon ipsum dolor amet filet mignon alcatra meatloaf jowl beef pastrami, turducken cow sirloin shankle spare ribs short loin beef ribs salami porchetta.", "666000", "123","", "1000","","","1672570161");
+INSERT INTO users VALUES("cd6a5c5aee914a1abd14d880deff31e3", "malte", "Malte", "Skjoldager","4", "malte@skjoldager.com","Bacon ipsum dolor amet filet mignon alcatra meatloaf jowl beef pastrami, turducken cow sirloin shankle spare ribs short loin beef ribs salami porchetta.", "666000", "123","", "1000","","","1672570161");
 
 CREATE INDEX idx_users_user_first_name
 ON users (user_first_name);
@@ -198,6 +200,25 @@ ON users.user_id = tweets.tweet_user_fk;
 SELECT * FROM users_and_tweets;
 
 
+DROP VIEW IF EXISTS logged_in_user;
+
+CREATE VIEW logged_in_user AS
+SELECT
+user_id,
+user_username,
+user_first_name,
+user_last_name,
+user_description,
+user_total_followers,
+user_total_following,
+user_total_tweets,
+user_avatar,
+user_cover_image,
+user_created_at
+FROM users;
+
+SELECT * FROM logged_in_user WHERE user_username = "elonmusk";
+
 
 DROP VIEW IF EXISTS users_by_name_desc;
 CREATE VIEW users_by_name_desc AS
@@ -208,3 +229,6 @@ SELECT * FROM users_by_name_desc ORDER BY user_first_name ASC;
 
 SELECT name FROM sqlite_master WHERE type = 'index';
 SELECT name FROM sqlite_master WHERE type = 'trigger';
+
+
+SELECT * FROM users WHERE "1" COLLATE NOCASE IN (user_username, user_email, user_phone_number) ;

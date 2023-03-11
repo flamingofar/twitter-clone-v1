@@ -1,5 +1,5 @@
 <aside class="sticky top-0 hidden h-screen pt-4 lg:flex lg:flex-col">
-	% if cookie_user:
+	% if user:
 	<div class="flex flex-col gap-4">
 		<div class="flex items-center w-full gap-3 px-4 py-3 text-base rounded-full bg-zinc-900">
 			<svg
@@ -99,7 +99,7 @@
 	</div>
 	% end
 	<!-- prettier-ignore -->
-	% if not cookie_user:
+	% if not user:
 
 	<div class="p-4 space-y-2 border rounded-2xl border-neutral-600">
 		<h2 class="text-xl font-bold text-gray-200">New on twitter?</h2>
@@ -154,7 +154,7 @@
 					Sign in with Apple
 				</button>
 				<a
-					href="/login"
+					href="/signup"
 					class="flex items-center justify-center w-full h-10 gap-2 text-sm font-bold text-black transition-colors duration-200 bg-white rounded-full hover:bg-gray-100"
 				>
 					Sign up

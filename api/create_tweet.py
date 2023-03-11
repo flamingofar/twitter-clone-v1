@@ -16,6 +16,7 @@ def decodeURL(string):
 
 @post("/tweet")
 def _():
+  cookie_user = request.get_cookie("user", secret=g.AUTH_SECRET)
   try:
     g.validate_tweet()
     db = g.db()
@@ -45,8 +46,8 @@ def _():
       )
 
     db.commit()
-    return {"info":"Tweet created successfully",
-            "tweet_id":tweet_id}
+    return dict({"info":"Tweet created successfully",
+            "tweet_id":tweet_id,}, **cookie_user)
   except Exception as ex:
     print(ex)
     response.status = 400
