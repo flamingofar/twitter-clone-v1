@@ -29,7 +29,7 @@ def _():
     except Exception as ex:
         print(str(ex))
         response.status = 302
-        response.set_header("Location", "/?error=We could not find that username.")
+        response.set_header("Location", "/login?error=We could not find that username.")
         return
     finally:
         if("db" in locals()): db.close()

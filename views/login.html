@@ -95,12 +95,13 @@
 					>
 						<span>or</span>
 					</div>
-					<form action="/login" method="post" class="flex flex-col w-full gap-6">
+					<form action="/login" method="post" class="flex flex-col w-full ">
 						<div
 							class="relative flex flex-col justify-end w-full h-16 py-2 border rounded-md group border-neutral-700 focus-within:border-sky-500 focus-within:border-2"
 						>
 							<input
 								id="username"
+								name="login_input"
 								type="text"
 								class="w-full pl-2 outline-none peer group-focus:self bg-inherit"
 							/>
@@ -110,8 +111,12 @@
 								>Phone, email or username</label
 							>
 						</div>
+							% if defined("errorMessage"):
+							<p class="text-sm text-red-500">{{errorMessage}}</p>
+						%end
+						<div class="flex flex-col gap-2 mt-6">
 
-						<button
+						<button type="submit"
 							class="flex items-center justify-center w-full h-10 font-bold text-black transition-colors duration-200 bg-white rounded-full hover:bg-gray-100"
 						>
 							Next
@@ -131,8 +136,10 @@
 		</main>
 	</body>
 	<script>
+
+
+
 		document.querySelector("[data-close_modal]").addEventListener("click", () => {
-			window.location.href = "/";
-		});
+			window.location.href = "/";})
 	</script>
 </html>
