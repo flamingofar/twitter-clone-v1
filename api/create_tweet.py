@@ -9,8 +9,6 @@ import g
 
 
 
-def decodeURL(string):
-    return str(string.encode("latin-1").decode("UTF-8"))
 
 
 
@@ -25,7 +23,7 @@ def _():
     print(type(tweet_user_fk))
     tweet_created_at = g.epoch
     tweet_updated_at = ""
-    tweet_message = decodeURL(request.forms.get("message"))
+    tweet_message = g.decodeURL(request.forms.get("message"))
     tweet_image = ""
     tweet_total_likes = "0"
     tweet_total_retweets = "0"

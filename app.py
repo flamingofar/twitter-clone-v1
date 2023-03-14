@@ -35,6 +35,7 @@ import api.delete_user
 import api.get_all
 import api.create_tweet
 import api.delete_tweet
+import api.api_sign_up
 
 #*############################# BRIDGES
 import bridges.login
